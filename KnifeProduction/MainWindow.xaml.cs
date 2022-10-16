@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KnifeProduction.Data.Classes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using KnifeProduction.Data;
+using KnifeProduction.Pages;
 
 namespace KnifeProduction
 {
@@ -20,8 +23,10 @@ namespace KnifeProduction
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        public static Client Client;
+        public MainWindow(Client client)
         {
+            Client = client;
             InitializeComponent();
             
         }
@@ -47,6 +52,11 @@ namespace KnifeProduction
         private void btnMinus_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             WindowState = WindowState.Minimized;
+        }
+
+        private void btnAccount_Click(object sender, RoutedEventArgs e)
+        {
+            fContainer.Navigate(new Account(Client));
         }
     }
 }

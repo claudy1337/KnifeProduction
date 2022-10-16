@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using KnifeProduction.Pages;
+using KnifeProduction.Data.Classes;
 
 namespace KnifeProduction.Windws
 {
@@ -40,6 +42,14 @@ namespace KnifeProduction.Windws
         {
             Auth auth = new Auth();
             auth.Show();
+            this.Close();
+        }
+
+        private void btnReg_Click(object sender, RoutedEventArgs e)
+        {
+            Client client = new Client("vaffa");
+            MainWindow mainWindow = new MainWindow(client);
+            mainWindow.Show();
             this.Close();
         }
     }

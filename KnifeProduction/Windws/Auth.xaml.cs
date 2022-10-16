@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using KnifeProduction.Windws;
+using KnifeProduction.Data.Classes;
 
 namespace KnifeProduction.Windws
 {
@@ -20,6 +21,7 @@ namespace KnifeProduction.Windws
     /// </summary>
     public partial class Auth : Window
     {
+
         public Auth()
         {
             InitializeComponent();
@@ -42,6 +44,14 @@ namespace KnifeProduction.Windws
         {
             Registration registration = new Registration();
             registration.Show();
+            this.Close();
+        }
+
+        private void btnAuth_Click(object sender, RoutedEventArgs e)
+        {
+            Client client = new Client("fdfdf");
+            MainWindow main = new MainWindow(client);
+            main.Show();
             this.Close();
         }
     }

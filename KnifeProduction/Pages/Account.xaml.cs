@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using KnifeProduction.Data.Classes;
+using KnifeProduction.Pages;
 
 namespace KnifeProduction.Pages
 {
@@ -20,8 +22,10 @@ namespace KnifeProduction.Pages
     /// </summary>
     public partial class Account : Page
     {
-        public Account()
+        public static Client Client;
+        public Account(Client client)
         {
+            Client = client;
             InitializeComponent();
         }
     }

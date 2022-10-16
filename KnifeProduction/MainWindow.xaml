@@ -13,7 +13,6 @@
         MouseLeftButtonDown="Window_MouseLeftButtonDown"
         xmlns:material="http://materialdesigninxaml.net/winfx/xaml/themes">
 
-
     <Window.Background>
         <ImageBrush ImageSource="/Resources/backround.png" />
     </Window.Background>
@@ -42,16 +41,16 @@
             <material:PackIcon Kind="Close" HorizontalAlignment="Right" Margin="5" x:Name="btnClose" MouseLeftButtonDown="btnClose_MouseLeftButtonDown"/>
         </StackPanel>
         <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Vertical" VerticalAlignment="Center">
-            <Button Style="{StaticResource MaterialDesignFlatButton}" Background="Transparent">
+            <Button Style="{StaticResource MaterialDesignFlatButton}" Background="Transparent" x:Name="btnAccount" Click="btnAccount_Click">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    
+                    <material:PackIcon Kind="Account" Grid.Column="0" Width="25" Height="25" Foreground="Black" />
+                    <TextBlock Text="fdfd" Grid.Column="1" Foreground="Black" VerticalAlignment="Center"/>
                 </Grid>
             </Button>
         </StackPanel>
-        
     </Grid>
 </Window>

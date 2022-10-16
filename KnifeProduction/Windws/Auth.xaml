@@ -54,7 +54,7 @@
                 
             </StackPanel>
             <StackPanel Grid.Row="2" Orientation="Vertical" VerticalAlignment="Center" Margin="15">
-                <Button Background="Transparent" Height="40" Content="Enter" Foreground="Black"/>
+                <Button Background="Transparent" Height="40" Content="Enter" Foreground="Black" x:Name="btnAuth" Click="btnAuth_Click"/>
                 <TextBlock Text="dont have account" HorizontalAlignment="Right" Margin="0,5,0,0" x:Name="txtReg" MouseLeftButtonDown="txtReg_MouseLeftButtonDown"/>
             </StackPanel>
            
