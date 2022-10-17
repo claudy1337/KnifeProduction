@@ -7,6 +7,7 @@
       mc:Ignorable="d" 
       d:DesignHeight="500" d:DesignWidth="720"
       Title="Account"
+      FontFamily="Poppins"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
 
     <Grid>
@@ -64,7 +65,7 @@
                     <materialDesign:Card Opacity="0.9" UniformCornerRadius="5" Background="#9EABBE" Width="250">
                         <Grid>
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="250"/>
+                                <RowDefinition Height="200"/>
                                 <RowDefinition Height="70"/>
                             </Grid.RowDefinitions>
                             <StackPanel Grid.Row="1" VerticalAlignment="Center" Orientation="Vertical">
@@ -74,6 +75,8 @@
                             <Image RenderOptions.BitmapScalingMode="HighQuality" Source="/Resources/default_knife.png" Grid.Row="0" Width="auto"/>
                         </Grid>
                     </materialDesign:Card>
+                    
+                    
                 </ListView>
                 <TextBlock Text="Your Knife" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="25"/>
             </Grid>
