@@ -63,6 +63,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Pages\ClientKnifeInformation.xaml.cs">
+      <DependentUpon>ClientKnifeInformation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ClientOrderKnife.xaml.cs">
+      <DependentUpon>ClientOrderKnife.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\CreateKnife.xaml.cs">
       <DependentUpon>CreateKnife.xaml</DependentUpon>
     </Compile>
@@ -98,6 +104,14 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Pages\Account.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ClientKnifeInformation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ClientOrderKnife.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

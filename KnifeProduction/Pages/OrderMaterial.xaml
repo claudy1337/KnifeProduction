@@ -44,9 +44,9 @@
                                 material:HintAssist.Hint="Material Pens"/>
                             </StackPanel>
                             <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-                                <material:PackIcon Kind="Minus" VerticalAlignment="Center" Width="40" Height="40"/>
-                                <TextBlock Text="12" FontSize="40" Margin="5,0,5,0"/>
-                                <material:PackIcon Kind="Plus" VerticalAlignment="Center" Width="40" Height="40"/>
+                                <material:PackIcon x:Name="btnMinus" MouseLeftButtonDown="btnMinus_MouseLeftButtonDown" Kind="Minus" VerticalAlignment="Center" Width="40" Height="40"/>
+                                <TextBlock Text="1" x:Name="txtCount" FontSize="40" Margin="5,0,5,0"/>
+                                <material:PackIcon x:Name="btnPlus" MouseLeftButtonDown="btnPlus_MouseLeftButtonDown" Kind="Plus" VerticalAlignment="Center" Width="40" Height="40"/>
                             </StackPanel>
                             <Button Grid.Row="2" Margin="10" Background="Transparent" Height="40" Content="Enter" Foreground="Black" x:Name="SaveSortValue"/>
                         </Grid>

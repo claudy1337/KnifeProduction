@@ -12,36 +12,26 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using KnifeProduction.Pages;
 using KnifeProduction.Data.Classes;
 
 namespace KnifeProduction.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для OrderMaterial.xaml
+    /// Логика взаимодействия для ClientKnifeInformation.xaml
     /// </summary>
-    public partial class OrderMaterial : Page
+    public partial class ClientKnifeInformation : Page
     {
         public static Client Client;
-        int countItem = 1;
-        public OrderMaterial(Client client)
+        public ClientKnifeInformation(Client client)
         {
             Client = client;
             InitializeComponent();
         }
 
-        private void btnPlus_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void btnClientOrder_Click(object sender, RoutedEventArgs e)
         {
-            countItem++;
-            txtCount.Text = countItem.ToString();
-        }
-
-        private void btnMinus_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        { 
-            if (countItem > 1)
-                countItem--;
-
-            txtCount.Text = countItem.ToString();
-
+            NavigationService.Navigate(new Account(Client));
         }
     }
 }

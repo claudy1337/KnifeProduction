@@ -40,16 +40,51 @@
             <material:PackIcon Kind="Minus" HorizontalAlignment="Right" Margin="5" x:Name="btnMinus" MouseLeftButtonDown="btnMinus_MouseLeftButtonDown"/>
             <material:PackIcon Kind="Close" HorizontalAlignment="Right" Margin="5" x:Name="btnClose" MouseLeftButtonDown="btnClose_MouseLeftButtonDown"/>
         </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="0" VerticalAlignment="Top" Margin="0,-20,0,0" HorizontalAlignment="Center">
+            <Image Source="/Resources/knife.png" Width="55" Height="55"/>
+            <TextBlock Text="Knife Prod" HorizontalAlignment="Center" FontSize="25"/>
+        </StackPanel>
         <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Vertical" VerticalAlignment="Center">
-            <Button  Background="Transparent" x:Name="btnAccount" Click="btnAccount_Click" Height="40" Width="150" HorizontalAlignment="Left">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                    <material:PackIcon Kind="Account" Grid.Column="0" Width="25" Height="25" Foreground="White" />
-                    <TextBlock Text="Account" Grid.Column="1" Foreground="White" VerticalAlignment="Center" FontSize="20"/>
-                </Grid>
+            <Button Background="Transparent" x:Name="btnAccount" Click="btnAccount_Click" Height="40" Width="130" Margin="10">
+                <StackPanel Orientation="Horizontal">
+                    <material:PackIcon Kind="Account" Height="40" Width="40" Margin="-35,-2,0,0"/>
+                    <TextBlock VerticalAlignment="Center" Text="Account"/>
+                </StackPanel>
+            </Button>
+
+            <Button Background="Transparent" x:Name="btnMarket" Click="btnMarket_Click" Height="40" Width="130" Margin="10">
+                <StackPanel Orientation="Horizontal">
+                    <material:PackIcon Kind="Shopping" Height="32" Width="32" Margin="-37,0,0,0"/>
+                    
+                    <TextBlock VerticalAlignment="Center" Text="Market"/>
+                </StackPanel>
+            </Button>
+
+            <Button Background="Transparent" x:Name="btnOrer" Click="btnOrder_Click" Height="40" Width="130" Margin="10">
+                <StackPanel Orientation="Horizontal">
+                    <material:PackIcon Kind="BookmarkOutline" Height="35" Width="35" Margin="-45,-2,0,0"/>
+                    <TextBlock VerticalAlignment="Center" Text="Order"/>
+                </StackPanel>
+                
+            </Button>
+
+            <Button Background="Transparent" x:Name="btnCreateKnife" Click="btnCreateKnife_Click" Height="40" Width="130" Margin="10">
+                <StackPanel Orientation="Horizontal">
+                    <material:PackIcon Kind="BorderColor" Height="35" Width="35" Margin="-40,1.5,0,0"/>
+                    <TextBlock VerticalAlignment="Center" Text="Create"/>
+                </StackPanel>
+            </Button>
+            <Button Background="Transparent" x:Name="btnClientOrderKnife" Click="btnClientOrderKnife_Click" Height="40" Width="130" Margin="10">
+                <StackPanel Orientation="Horizontal">
+                    <material:PackIcon Kind="AccountCash" Height="35" Width="35" Margin="-40,-1,0,0"/>
+                    <TextBlock VerticalAlignment="Center" Text="Client"/>
+                </StackPanel>
+            </Button>
+            <Button Background="Transparent" x:Name="btnExit" Click="btnExit_Click" Height="40" Width="130" Margin="10">
+                <StackPanel Orientation="Horizontal">
+                    <material:PackIcon Kind="ExitToApp" Height="35" Width="35" Margin="-52,-2,0,0"/>
+                    <TextBlock VerticalAlignment="Center" Text="Exit"/>
+                </StackPanel>
             </Button>
         </StackPanel>
     </Grid>

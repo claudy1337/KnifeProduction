@@ -27,5 +27,10 @@ namespace KnifeProduction.Pages
             Client = client;
             InitializeComponent();
         }
+
+        private void lstvKnife_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            NavigationService.Navigate(new informationKnife(Client));
+        }
     }
 }

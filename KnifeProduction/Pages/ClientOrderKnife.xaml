@@ -1,4 +1,4 @@
-﻿<Page x:Class="KnifeProduction.Pages.Market"
+﻿<Page x:Class="KnifeProduction.Pages.ClientOrderKnife"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,9 +6,9 @@
       xmlns:local="clr-namespace:KnifeProduction.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="500" d:DesignWidth="720"
-      Title="Market"
       FontFamily="Poppins"
-      xmlns:material="http://materialdesigninxaml.net/winfx/xaml/themes">
+      xmlns:material="http://materialdesigninxaml.net/winfx/xaml/themes"
+      Title="ClientOrderKnife">
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -26,7 +26,7 @@
                     <Button Margin="10" Background="Transparent" Height="40" Content="Enter" Foreground="Black" x:Name="SaveSortValue"/>
                     <TextBlock Text="Clear" HorizontalAlignment="Right" Margin="0,0,12,0" FontSize="15"/>
                 </StackPanel>
-                <TextBlock Text="Market Knife" FontSize="25" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <TextBlock Text="Client Order" FontSize="25" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                 <StackPanel Grid.Row="1" VerticalAlignment="Center" Margin="15">
                     <TextBox
                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"
@@ -45,7 +45,7 @@
                     <CheckBox Content="is hole" FontSize="15"/>
                 </StackPanel>
             </Grid>
-            
+
         </material:Card>
         <material:Card Grid.Column="1" Margin="15">
             <StackPanel Margin="10">
@@ -53,11 +53,12 @@
                     <material:Card Opacity="0.9" UniformCornerRadius="5" Background="#9EABBE" Width="320">
                         <Grid>
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="250"/>
-                                <RowDefinition Height="70"/>
+                                <RowDefinition Height="200"/>
+                                <RowDefinition Height="100"/>
                             </Grid.RowDefinitions>
                             <StackPanel Grid.Row="1" VerticalAlignment="Center" Orientation="Vertical">
-                                <TextBlock Text="Name" FontSize="25"/>
+                                <TextBlock Text="Client Name" FontSize="25"/>
+                                <TextBlock Text="Knife Name" FontSize="25"/>
                                 <TextBlock Text="Price" FontSize="25"/>
                             </StackPanel>
                             <Image RenderOptions.BitmapScalingMode="HighQuality" Source="/Resources/default_knife.png" Grid.Row="0" Width="auto"/>

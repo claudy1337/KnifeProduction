@@ -26,8 +26,8 @@
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="200"/>
-                            <RowDefinition Height="100"/>
-                            <RowDefinition Height="80"/>
+                            <RowDefinition Height="110"/>
+                            <RowDefinition Height="60"/>
                         </Grid.RowDefinitions>
                         <StackPanel Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center">
 
@@ -48,8 +48,10 @@
                             <Button Background="Transparent" Height="40" Content="Edit" Foreground="Black" x:Name="btnEdit" />
                         </StackPanel>
 
-                        <StackPanel Grid.Row="1">
-                            
+                        <StackPanel Grid.Row="1" Orientation="Vertical" VerticalAlignment="Center">
+                            <TextBlock Text="Order count:" FontSize="22" x:Name="txtOrderCount"/>
+                            <TextBlock Text="Spent: " FontSize="22" x:Name="txtSpent"/>
+                            <TextBlock Text="Role: " FontSize="22" x:Name="txtRole"/>
                         </StackPanel>
                     </Grid>
                 </StackPanel>
@@ -61,7 +63,7 @@
                     <RowDefinition Height="75"/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <ListView Grid.Row="1" HorizontalAlignment="Center" >
+                <ListView Grid.Row="1" HorizontalAlignment="Center" SelectionChanged="ListView_SelectionChanged">
                     <materialDesign:Card Opacity="0.9" UniformCornerRadius="5" Background="#9EABBE" Width="250">
                         <Grid>
                             <Grid.RowDefinitions>

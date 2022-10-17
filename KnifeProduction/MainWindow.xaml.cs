@@ -15,6 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using KnifeProduction.Data;
 using KnifeProduction.Pages;
+using KnifeProduction.Windws;
 
 namespace KnifeProduction
 {
@@ -55,7 +56,34 @@ namespace KnifeProduction
 
         private void btnAccount_Click(object sender, RoutedEventArgs e)
         {
-            fContainer.Navigate(new informationKnife(Client));
+            fContainer.Navigate(new Account(Client));
+        }
+
+        private void btnMarket_Click(object sender, RoutedEventArgs e)
+        {
+            fContainer.Navigate(new Market(Client));
+        }
+
+        private void btnOrder_Click(object sender, RoutedEventArgs e)
+        {
+            fContainer.Navigate(new OrderMaterial(Client));
+        }
+
+        private void btnCreateKnife_Click(object sender, RoutedEventArgs e)
+        {
+            fContainer.Navigate(new CreateKnife(Client));
+        }
+
+        private void btnExit_Click(object sender, RoutedEventArgs e)
+        {
+            Auth auth = new Auth();
+            auth.Show();
+            this.Close();
+        }
+
+        private void btnClientOrderKnife_Click(object sender, RoutedEventArgs e)
+        {
+            fContainer.Navigate(new ClientOrderKnife(Client));
         }
     }
 }
