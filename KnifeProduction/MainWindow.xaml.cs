@@ -30,7 +30,6 @@ namespace KnifeProduction
             InitializeComponent();
             
         }
-
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             try
@@ -56,7 +55,7 @@ namespace KnifeProduction
 
         private void btnAccount_Click(object sender, RoutedEventArgs e)
         {
-            fContainer.Navigate(new Account(Client));
+            fContainer.Navigate(new informationKnife(Client));
         }
     }
 }

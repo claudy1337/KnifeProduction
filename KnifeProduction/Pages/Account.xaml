@@ -6,9 +6,78 @@
       xmlns:local="clr-namespace:KnifeProduction.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="500" d:DesignWidth="720"
-      Title="Account">
+      Title="Account"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
 
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <materialDesign:Card Grid.Column="0" Margin="15">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="400"/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="Profile" Grid.Row="0" FontSize="25" VerticalAlignment="Center"/>
+                <StackPanel Grid.Row="1" Margin="0,20,0,20">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="200"/>
+                            <RowDefinition Height="100"/>
+                            <RowDefinition Height="80"/>
+                        </Grid.RowDefinitions>
+                        <StackPanel Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+
+                            <TextBox
+                                Style="{StaticResource MaterialDesignFilledTextBox}"
+                                materialDesign:HintAssist.Hint="Login" Width="240" IsReadOnly="True"/>
+
+                            <TextBox
+                                Style="{StaticResource MaterialDesignFilledTextBox}"
+                                materialDesign:HintAssist.Hint="Name" Width="240" Margin="0,20,0,20"/>
+
+                            <PasswordBox
+                                 Style="{StaticResource MaterialDesignFilledPasswordBox}"
+                                 materialDesign:HintAssist.Hint="Password" Width="240"/>
+                        </StackPanel>
+
+                        <StackPanel Grid.Row="2" Orientation="Vertical" Margin="37,0,37,0" VerticalAlignment="Center">
+                            <Button Background="Transparent" Height="40" Content="Edit" Foreground="Black" x:Name="btnEdit" />
+                        </StackPanel>
+
+                        <StackPanel Grid.Row="1">
+                            
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+            </Grid>
+        </materialDesign:Card>
+        <materialDesign:Card Grid.Column="1" Margin="15">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="75"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <ListView Grid.Row="1" HorizontalAlignment="Center" >
+                    <materialDesign:Card Opacity="0.9" UniformCornerRadius="5" Background="#9EABBE" Width="250">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="250"/>
+                                <RowDefinition Height="70"/>
+                            </Grid.RowDefinitions>
+                            <StackPanel Grid.Row="1" VerticalAlignment="Center" Orientation="Vertical">
+                                <TextBlock Text="Name" FontSize="25"/>
+                                <TextBlock Text="Price" FontSize="25"/>
+                            </StackPanel>
+                            <Image RenderOptions.BitmapScalingMode="HighQuality" Source="/Resources/default_knife.png" Grid.Row="0" Width="auto"/>
+                        </Grid>
+                    </materialDesign:Card>
+                </ListView>
+                <TextBlock Text="Your Knife" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="25"/>
+            </Grid>
+        </materialDesign:Card>
+
     </Grid>
 </Page>

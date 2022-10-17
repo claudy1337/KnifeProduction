@@ -41,14 +41,14 @@
             <material:PackIcon Kind="Close" HorizontalAlignment="Right" Margin="5" x:Name="btnClose" MouseLeftButtonDown="btnClose_MouseLeftButtonDown"/>
         </StackPanel>
         <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Vertical" VerticalAlignment="Center">
-            <Button Style="{StaticResource MaterialDesignFlatButton}" Background="Transparent" x:Name="btnAccount" Click="btnAccount_Click">
+            <Button  Background="Transparent" x:Name="btnAccount" Click="btnAccount_Click" Height="40" Width="150" HorizontalAlignment="Left">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <material:PackIcon Kind="Account" Grid.Column="0" Width="25" Height="25" Foreground="Black" />
-                    <TextBlock Text="fdfd" Grid.Column="1" Foreground="Black" VerticalAlignment="Center"/>
+                    <material:PackIcon Kind="Account" Grid.Column="0" Width="25" Height="25" Foreground="White" />
+                    <TextBlock Text="Account" Grid.Column="1" Foreground="White" VerticalAlignment="Center" FontSize="20"/>
                 </Grid>
             </Button>
         </StackPanel>

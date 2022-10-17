@@ -10,9 +10,19 @@
             <Style TargetType="Border">
                 <Setter Property="Background" Value="White"/>
                 <Setter Property="CornerRadius" Value="8"/>
+                <Setter Property="materialDesign:ShadowAssist.ShadowDepth" Value="Depth5"/>
+                <Setter Property="materialDesign:ShadowAssist.ShadowEdges" Value="All"/>
             </Style>
 
-            
+            <Style TargetType="material:Card">
+                <Setter Property="Background" Value="White"/>
+                <Setter Property="Padding" Value="8"/>
+                <Setter Property="materialDesign:ShadowAssist.ShadowDepth" Value="Depth5"/>
+                <Setter Property="materialDesign:ShadowAssist.ShadowEdges" Value="All"/>
+            </Style>
+
+
+
 
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Style/MainStyle.xaml"/>
