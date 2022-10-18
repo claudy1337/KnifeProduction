@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using KnifeProduction.Pages;
 using KnifeProduction.Data.Classes;
+using KnifeProduction.Data.Model;
 
 namespace KnifeProduction.Pages
 {
@@ -22,16 +23,16 @@ namespace KnifeProduction.Pages
     /// </summary>
     public partial class ClientKnifeInformation : Page
     {
-        public static Client Client;
-        public ClientKnifeInformation(Client client)
+        public static User User;
+        public ClientKnifeInformation(User user)
         {
-            Client = client;
+            User = user;
             InitializeComponent();
         }
 
         private void btnClientOrder_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Account(Client));
+            NavigationService.Navigate(new Account(User));
         }
     }
 }

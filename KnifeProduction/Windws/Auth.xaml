@@ -39,10 +39,12 @@
 
 
                 <TextBox
+                     x:Name="txtLogin"
                      Style="{StaticResource MaterialDesignFilledTextBox}"
                      material:HintAssist.Hint="Login" Width="240"/>
 
                 <PasswordBox
+                    x:Name="txtPassword"
                     Margin="0,15,0,0"
                     Style="{StaticResource MaterialDesignFilledPasswordBox}"
                     material:HintAssist.Hint="Password" Width="240"/>

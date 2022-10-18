@@ -18,34 +18,22 @@ using KnifeProduction.Data.Model;
 namespace KnifeProduction.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для OrderMaterial.xaml
+    /// Логика взаимодействия для AddBackrestPage.xaml
     /// </summary>
-    public partial class OrderMaterial : Page
+    public partial class AddBackrestPage : Page
     {
-        public static User User;
-        int countItem = 1;
-        public OrderMaterial(User user)
+        public AddBackrestPage()
         {
-            User = user;
             InitializeComponent();
-            Getter();
+            
         }
 
-        private void btnPlus_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-            countItem++;
-            txtCount.Text = countItem.ToString();
+            DataBaseRequestMethods.AddBackrest("aboba");
         }
 
-        private void btnMinus_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        { 
-            if (countItem > 1)
-                countItem--;
-
-            txtCount.Text = countItem.ToString();
-
-        }
-        public void Getter()
+        private void btnGett_Click(object sender, RoutedEventArgs e)
         {
             var aboba = DataBaseRequestMethods.GetBakres(3);
             this.DataContext = aboba;

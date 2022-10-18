@@ -60,7 +60,7 @@
                 </StackPanel>
             </Button>
 
-            <Button Background="Transparent" x:Name="btnOrer" Click="btnOrder_Click" Height="40" Width="130" Margin="10">
+            <Button Background="Transparent" x:Name="btnOrder" Click="btnOrder_Click" Height="40" Width="130" Margin="10">
                 <StackPanel Orientation="Horizontal">
                     <material:PackIcon Kind="BookmarkOutline" Height="35" Width="35" Margin="-45,-2,0,0"/>
                     <TextBlock VerticalAlignment="Center" Text="Order"/>

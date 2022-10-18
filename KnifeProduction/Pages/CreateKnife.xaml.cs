@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using KnifeProduction.Data.Model;
 using KnifeProduction.Data.Classes;
 
 namespace KnifeProduction.Pages
@@ -21,11 +22,26 @@ namespace KnifeProduction.Pages
     /// </summary>
     public partial class CreateKnife : Page
     {
-        public static Client Client;
-        public CreateKnife(Client client)
+        public static User User;
+        public CreateKnife(User user)
         {
-            Client = client;
+            User = user;
             InitializeComponent();
+        }
+
+        private void btnPlus_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void btnMinus_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void btnCreateKnife_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

@@ -7,9 +7,72 @@
       mc:Ignorable="d" 
       FontFamily="Poppins"
       d:DesignHeight="500" d:DesignWidth="720"
-      Title="CreateKnife">
+      Title="CreateKnife"
+      xmlns:material="http://materialdesigninxaml.net/winfx/xaml/themes">
 
-    <Grid>
-        
-    </Grid>
+    <material:Card Margin="15">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Vertical" VerticalAlignment="Top" Width="315">
+                <TextBlock Text="Blade" FontSize="25" Margin="0,5,0,0"/>
+                <ComboBox
+                      HorizontalAlignment="Left"
+                      Width="170"
+                      Height="45"
+                      Margin="0,5,0,10"
+                      Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                      material:HintAssist.Hint="Material Obuh"/>
+                <ComboBox
+                      HorizontalAlignment="Left"
+                      Width="170"
+                      Height="45"
+                      Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                      material:HintAssist.Hint="Material Falsehood"/>
+            </StackPanel>
+            
+            <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top" Width="315">
+                <TextBlock Text="Handle" FontSize="25" Margin="0,5,0,0"/>
+                <ComboBox
+                      HorizontalAlignment="Left"
+                      Width="170"
+                      Height="45"
+                      Margin="0,5,0,10"
+                      Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                      material:HintAssist.Hint="Material Clip"/>
+                <ComboBox
+                      HorizontalAlignment="Left"
+                      Width="170"
+                      Height="45"
+                      Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                      material:HintAssist.Hint="Material Backrest"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="2" Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Width="315" Height="125">
+                <CheckBox Style="{StaticResource MaterialDesignAccentCheckBox}" Content="isHole" FontSize="20" VerticalAlignment="Top"/>
+                <TextBlock Text="Price: " FontSize="20"/>
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <material:PackIcon x:Name="btnMinus" MouseLeftButtonDown="btnMinus_MouseLeftButtonDown" Kind="Minus" VerticalAlignment="Center" Width="40" Height="40"/>
+                    <TextBlock Text="1" x:Name="txtCount" FontSize="40" Margin="5,0,5,0"/>
+                    <material:PackIcon x:Name="btnPlus" MouseLeftButtonDown="btnPlus_MouseLeftButtonDown" Kind="Plus" VerticalAlignment="Center" Width="40" Height="40"/>
+                </StackPanel>
+            </StackPanel>
+
+
+            <StackPanel Grid.Row="2" Grid.Column="1" Margin="10" Orientation="Vertical">
+                <TextBox
+                     x:Name="txtName"
+                     Style="{StaticResource MaterialDesignFilledTextBox}"
+                     material:HintAssist.Hint="Name" Width="240"/>
+                <Button Background="Transparent" Width="240" Margin="0,25,0,0" Height="40" Content="Create" Foreground="Black" x:Name="btnCreateKnife" Click="btnCreateKnife_Click"  Cursor="Hand"/>
+            </StackPanel>
+        </Grid>
+    </material:Card>
 </Page>

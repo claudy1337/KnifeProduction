@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using KnifeProduction.Data.Classes;
+using KnifeProduction.Data.Model;
 
 namespace KnifeProduction.Pages
 {
@@ -21,16 +22,16 @@ namespace KnifeProduction.Pages
     /// </summary>
     public partial class Market : Page
     {
-        public static Client Client;
-        public Market(Client client)
+        public static User User;
+        public Market(User user)
         {
-            Client = client;
+            User = user;
             InitializeComponent();
         }
 
         private void lstvKnife_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            NavigationService.Navigate(new informationKnife(Client));
+            NavigationService.Navigate(new informationKnife(User));
         }
     }
 }

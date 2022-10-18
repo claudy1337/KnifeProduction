@@ -1,0 +1,691 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище knifeProdactionModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Backrest">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Type" Type="nvarchar(max)" />
+          <Property Name="Price" Type="nchar" MaxLength="10" />
+          <Property Name="Image" Type="image" />
+        </EntityType>
+        <EntityType Name="Blade">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idObuh" Type="int" />
+          <Property Name="idFalsehood" Type="int" />
+        </EntityType>
+        <EntityType Name="Clip">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Price" Type="nchar" MaxLength="10" />
+          <Property Name="Image" Type="image" />
+        </EntityType>
+        <EntityType Name="Falsehood">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="10" />
+          <Property Name="Price" Type="nchar" MaxLength="10" />
+          <Property Name="Image" Type="image" />
+        </EntityType>
+        <EntityType Name="Handle">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idBackrest" Type="int" />
+          <Property Name="idClip" Type="int" />
+        </EntityType>
+        <EntityType Name="Knives">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idBlade" Type="int" Nullable="false" />
+          <Property Name="idHandle" Type="int" Nullable="false" />
+          <Property Name="isHole" Type="bit" Nullable="false" />
+          <Property Name="Image" Type="image" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Obuh">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Price" Type="nchar" MaxLength="10" />
+          <Property Name="Image" Type="image" />
+        </EntityType>
+        <EntityType Name="OrderKnives">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idKnives" Type="int" />
+          <Property Name="idUser" Type="int" />
+          <Property Name="Count" Type="nchar" MaxLength="10" />
+          <Property Name="Price" Type="nchar" MaxLength="10" />
+          <Property Name="Status" Type="bit" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Login" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="IdRole" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Blade_Falsehood">
+          <End Role="Falsehood" Type="Self.Falsehood" Multiplicity="0..1" />
+          <End Role="Blade" Type="Self.Blade" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Falsehood">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Blade">
+              <PropertyRef Name="idFalsehood" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Blade_Obuh">
+          <End Role="Obuh" Type="Self.Obuh" Multiplicity="0..1" />
+          <End Role="Blade" Type="Self.Blade" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Obuh">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Blade">
+              <PropertyRef Name="idObuh" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Handle_Backrest">
+          <End Role="Backrest" Type="Self.Backrest" Multiplicity="0..1" />
+          <End Role="Handle" Type="Self.Handle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Backrest">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Handle">
+              <PropertyRef Name="idBackrest" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Handle_Clip">
+          <End Role="Clip" Type="Self.Clip" Multiplicity="0..1" />
+          <End Role="Handle" Type="Self.Handle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clip">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Handle">
+              <PropertyRef Name="idClip" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Knives_Blade">
+          <End Role="Blade" Type="Self.Blade" Multiplicity="1" />
+          <End Role="Knives" Type="Self.Knives" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Blade">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Knives">
+              <PropertyRef Name="idBlade" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Knives_Handle">
+          <End Role="Handle" Type="Self.Handle" Multiplicity="1" />
+          <End Role="Knives" Type="Self.Knives" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Handle">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Knives">
+              <PropertyRef Name="idHandle" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderKnives_Knives">
+          <End Role="Knives" Type="Self.Knives" Multiplicity="0..1" />
+          <End Role="OrderKnives" Type="Self.OrderKnives" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Knives">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="OrderKnives">
+              <PropertyRef Name="idKnives" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderKnives_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="OrderKnives" Type="Self.OrderKnives" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="OrderKnives">
+              <PropertyRef Name="idUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="IdRole" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище knifeProdactionModelContainer">
+          <EntitySet Name="Backrest" EntityType="Self.Backrest" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Blade" EntityType="Self.Blade" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Clip" EntityType="Self.Clip" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Falsehood" EntityType="Self.Falsehood" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Handle" EntityType="Self.Handle" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Knives" EntityType="Self.Knives" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Obuh" EntityType="Self.Obuh" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderKnives" EntityType="Self.OrderKnives" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Blade_Falsehood" Association="Self.FK_Blade_Falsehood">
+            <End Role="Falsehood" EntitySet="Falsehood" />
+            <End Role="Blade" EntitySet="Blade" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Blade_Obuh" Association="Self.FK_Blade_Obuh">
+            <End Role="Obuh" EntitySet="Obuh" />
+            <End Role="Blade" EntitySet="Blade" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Handle_Backrest" Association="Self.FK_Handle_Backrest">
+            <End Role="Backrest" EntitySet="Backrest" />
+            <End Role="Handle" EntitySet="Handle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Handle_Clip" Association="Self.FK_Handle_Clip">
+            <End Role="Clip" EntitySet="Clip" />
+            <End Role="Handle" EntitySet="Handle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Knives_Blade" Association="Self.FK_Knives_Blade">
+            <End Role="Blade" EntitySet="Blade" />
+            <End Role="Knives" EntitySet="Knives" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Knives_Handle" Association="Self.FK_Knives_Handle">
+            <End Role="Handle" EntitySet="Handle" />
+            <End Role="Knives" EntitySet="Knives" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderKnives_Knives" Association="Self.FK_OrderKnives_Knives">
+            <End Role="Knives" EntitySet="Knives" />
+            <End Role="OrderKnives" EntitySet="OrderKnives" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderKnives_User" Association="Self.FK_OrderKnives_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="OrderKnives" EntitySet="OrderKnives" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="knifeProdactionModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Backrest">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Price" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Handle" Relationship="Self.FK_Handle_Backrest" FromRole="Backrest" ToRole="Handle" />
+        </EntityType>
+        <EntityType Name="Blade">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idObuh" Type="Int32" />
+          <Property Name="idFalsehood" Type="Int32" />
+          <NavigationProperty Name="Falsehood" Relationship="Self.FK_Blade_Falsehood" FromRole="Blade" ToRole="Falsehood" />
+          <NavigationProperty Name="Obuh" Relationship="Self.FK_Blade_Obuh" FromRole="Blade" ToRole="Obuh" />
+          <NavigationProperty Name="Knives" Relationship="Self.FK_Knives_Blade" FromRole="Blade" ToRole="Knives" />
+        </EntityType>
+        <EntityType Name="Clip">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Price" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Handle" Relationship="Self.FK_Handle_Clip" FromRole="Clip" ToRole="Handle" />
+        </EntityType>
+        <EntityType Name="Falsehood">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Price" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Blade" Relationship="Self.FK_Blade_Falsehood" FromRole="Falsehood" ToRole="Blade" />
+        </EntityType>
+        <EntityType Name="Handle">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idBackrest" Type="Int32" />
+          <Property Name="idClip" Type="Int32" />
+          <NavigationProperty Name="Backrest" Relationship="Self.FK_Handle_Backrest" FromRole="Handle" ToRole="Backrest" />
+          <NavigationProperty Name="Clip" Relationship="Self.FK_Handle_Clip" FromRole="Handle" ToRole="Clip" />
+          <NavigationProperty Name="Knives" Relationship="Self.FK_Knives_Handle" FromRole="Handle" ToRole="Knives" />
+        </EntityType>
+        <EntityType Name="Knives">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idBlade" Type="Int32" Nullable="false" />
+          <Property Name="idHandle" Type="Int32" Nullable="false" />
+          <Property Name="isHole" Type="Boolean" Nullable="false" />
+          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Blade" Relationship="Self.FK_Knives_Blade" FromRole="Knives" ToRole="Blade" />
+          <NavigationProperty Name="Handle" Relationship="Self.FK_Knives_Handle" FromRole="Knives" ToRole="Handle" />
+          <NavigationProperty Name="OrderKnives" Relationship="Self.FK_OrderKnives_Knives" FromRole="Knives" ToRole="OrderKnives" />
+        </EntityType>
+        <EntityType Name="Obuh">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Price" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Blade" Relationship="Self.FK_Blade_Obuh" FromRole="Obuh" ToRole="Blade" />
+        </EntityType>
+        <EntityType Name="OrderKnives">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idKnives" Type="Int32" />
+          <Property Name="idUser" Type="Int32" />
+          <Property Name="Count" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Price" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Status" Type="Boolean" />
+          <NavigationProperty Name="Knives" Relationship="Self.FK_OrderKnives_Knives" FromRole="OrderKnives" ToRole="Knives" />
+          <NavigationProperty Name="User" Relationship="Self.FK_OrderKnives_User" FromRole="OrderKnives" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="User" Relationship="Self.FK_User_Role" FromRole="Role" ToRole="User" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Login" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IdRole" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="OrderKnives" Relationship="Self.FK_OrderKnives_User" FromRole="User" ToRole="OrderKnives" />
+          <NavigationProperty Name="Role" Relationship="Self.FK_User_Role" FromRole="User" ToRole="Role" />
+        </EntityType>
+        <Association Name="FK_Handle_Backrest">
+          <End Role="Backrest" Type="Self.Backrest" Multiplicity="0..1" />
+          <End Role="Handle" Type="Self.Handle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Backrest">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Handle">
+              <PropertyRef Name="idBackrest" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Blade_Falsehood">
+          <End Role="Falsehood" Type="Self.Falsehood" Multiplicity="0..1" />
+          <End Role="Blade" Type="Self.Blade" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Falsehood">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Blade">
+              <PropertyRef Name="idFalsehood" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Blade_Obuh">
+          <End Role="Obuh" Type="Self.Obuh" Multiplicity="0..1" />
+          <End Role="Blade" Type="Self.Blade" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Obuh">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Blade">
+              <PropertyRef Name="idObuh" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Knives_Blade">
+          <End Role="Blade" Type="Self.Blade" Multiplicity="1" />
+          <End Role="Knives" Type="Self.Knives" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Blade">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Knives">
+              <PropertyRef Name="idBlade" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Handle_Clip">
+          <End Role="Clip" Type="Self.Clip" Multiplicity="0..1" />
+          <End Role="Handle" Type="Self.Handle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clip">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Handle">
+              <PropertyRef Name="idClip" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Knives_Handle">
+          <End Role="Handle" Type="Self.Handle" Multiplicity="1" />
+          <End Role="Knives" Type="Self.Knives" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Handle">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Knives">
+              <PropertyRef Name="idHandle" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderKnives_Knives">
+          <End Role="Knives" Type="Self.Knives" Multiplicity="0..1" />
+          <End Role="OrderKnives" Type="Self.OrderKnives" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Knives">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="OrderKnives">
+              <PropertyRef Name="idKnives" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderKnives_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="OrderKnives" Type="Self.OrderKnives" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="OrderKnives">
+              <PropertyRef Name="idUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="IdRole" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="knifeProdactionEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Backrest" EntityType="Self.Backrest" />
+          <EntitySet Name="Blade" EntityType="Self.Blade" />
+          <EntitySet Name="Clip" EntityType="Self.Clip" />
+          <EntitySet Name="Falsehood" EntityType="Self.Falsehood" />
+          <EntitySet Name="Handle" EntityType="Self.Handle" />
+          <EntitySet Name="Knives" EntityType="Self.Knives" />
+          <EntitySet Name="Obuh" EntityType="Self.Obuh" />
+          <EntitySet Name="OrderKnives" EntityType="Self.OrderKnives" />
+          <EntitySet Name="Role" EntityType="Self.Role" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="User" EntityType="Self.User" />
+          <AssociationSet Name="FK_Handle_Backrest" Association="Self.FK_Handle_Backrest">
+            <End Role="Backrest" EntitySet="Backrest" />
+            <End Role="Handle" EntitySet="Handle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Blade_Falsehood" Association="Self.FK_Blade_Falsehood">
+            <End Role="Falsehood" EntitySet="Falsehood" />
+            <End Role="Blade" EntitySet="Blade" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Blade_Obuh" Association="Self.FK_Blade_Obuh">
+            <End Role="Obuh" EntitySet="Obuh" />
+            <End Role="Blade" EntitySet="Blade" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Knives_Blade" Association="Self.FK_Knives_Blade">
+            <End Role="Blade" EntitySet="Blade" />
+            <End Role="Knives" EntitySet="Knives" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Handle_Clip" Association="Self.FK_Handle_Clip">
+            <End Role="Clip" EntitySet="Clip" />
+            <End Role="Handle" EntitySet="Handle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Knives_Handle" Association="Self.FK_Knives_Handle">
+            <End Role="Handle" EntitySet="Handle" />
+            <End Role="Knives" EntitySet="Knives" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderKnives_Knives" Association="Self.FK_OrderKnives_Knives">
+            <End Role="Knives" EntitySet="Knives" />
+            <End Role="OrderKnives" EntitySet="OrderKnives" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderKnives_User" Association="Self.FK_OrderKnives_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="OrderKnives" EntitySet="OrderKnives" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище knifeProdactionModelContainer" CdmEntityContainer="knifeProdactionEntities">
+          <EntitySetMapping Name="Backrest">
+            <EntityTypeMapping TypeName="knifeProdactionModel.Backrest">
+              <MappingFragment StoreEntitySet="Backrest">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Blade">
+            <EntityTypeMapping TypeName="knifeProdactionModel.Blade">
+              <MappingFragment StoreEntitySet="Blade">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="idObuh" ColumnName="idObuh" />
+                <ScalarProperty Name="idFalsehood" ColumnName="idFalsehood" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clip">
+            <EntityTypeMapping TypeName="knifeProdactionModel.Clip">
+              <MappingFragment StoreEntitySet="Clip">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Falsehood">
+            <EntityTypeMapping TypeName="knifeProdactionModel.Falsehood">
+              <MappingFragment StoreEntitySet="Falsehood">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Handle">
+            <EntityTypeMapping TypeName="knifeProdactionModel.Handle">
+              <MappingFragment StoreEntitySet="Handle">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="idBackrest" ColumnName="idBackrest" />
+                <ScalarProperty Name="idClip" ColumnName="idClip" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Knives">
+            <EntityTypeMapping TypeName="knifeProdactionModel.Knives">
+              <MappingFragment StoreEntitySet="Knives">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="idBlade" ColumnName="idBlade" />
+                <ScalarProperty Name="idHandle" ColumnName="idHandle" />
+                <ScalarProperty Name="isHole" ColumnName="isHole" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Obuh">
+            <EntityTypeMapping TypeName="knifeProdactionModel.Obuh">
+              <MappingFragment StoreEntitySet="Obuh">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderKnives">
+            <EntityTypeMapping TypeName="knifeProdactionModel.OrderKnives">
+              <MappingFragment StoreEntitySet="OrderKnives">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="idKnives" ColumnName="idKnives" />
+                <ScalarProperty Name="idUser" ColumnName="idUser" />
+                <ScalarProperty Name="Count" ColumnName="Count" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Role">
+            <EntityTypeMapping TypeName="knifeProdactionModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="knifeProdactionModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User">
+            <EntityTypeMapping TypeName="knifeProdactionModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="IdRole" ColumnName="IdRole" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

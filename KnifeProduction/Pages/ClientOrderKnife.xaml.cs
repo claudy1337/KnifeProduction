@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using KnifeProduction.Pages;
 using KnifeProduction.Data.Classes;
+using KnifeProduction.Data.Model;
 
 namespace KnifeProduction.Pages
 {
@@ -22,10 +23,10 @@ namespace KnifeProduction.Pages
     /// </summary>
     public partial class ClientOrderKnife : Page
     {
-        public static Client Client;
-        public ClientOrderKnife(Client client)
+        public static User User;
+        public ClientOrderKnife(User user)
         {
-            Client = client;
+            User = user;
             InitializeComponent();
         }
 

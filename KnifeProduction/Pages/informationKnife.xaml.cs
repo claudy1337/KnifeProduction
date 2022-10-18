@@ -15,6 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using KnifeProduction.Data.Classes;
 using KnifeProduction.Pages;
+using KnifeProduction.Data.Model;
 
 namespace KnifeProduction.Pages
 {
@@ -25,10 +26,10 @@ namespace KnifeProduction.Pages
     {
         int countItem = 1;
         int price = 100;
-        public static Client Client;
-        public informationKnife(Client client)
+        public static User User;
+        public informationKnife(User user)
         {
-            Client = client;
+            User = user;
             InitializeComponent();
         }
 
@@ -54,12 +55,12 @@ namespace KnifeProduction.Pages
 
         private void btnBack_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            NavigationService.Navigate(new Market(Client));
+            NavigationService.Navigate(new Market(User));
         }
 
         private void btnClientOrder_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Account(Client));
+            NavigationService.Navigate(new Account(User));
         }
 
         private void txtCount_PreviewTextInput(object sender, TextCompositionEventArgs e)

@@ -39,6 +39,7 @@
                         <Image Source="/Resources/knife.png" Grid.Column="1" Margin="10"/>
                     </Grid>
                     <TextBox
+                      x:Name="txtName"
                       Width="250"
                       Margin="10"
                       Style="{StaticResource MaterialDesignFilledTextBox}"
@@ -49,6 +50,7 @@
                       material:HintAssist.Hint="Name"/>
                     
                     <TextBox
+                      x:Name="txtLogin"
                       Width="250"
                       Margin="10"
                       Style="{StaticResource MaterialDesignFilledTextBox}"
@@ -58,11 +60,13 @@
                       MaxWidth="400"
                       material:HintAssist.Hint="Login"/>
                     <PasswordBox
+                    x:Name="txtPassword"
                     Width="250"
                     Margin="10"
                     Style="{StaticResource MaterialDesignFilledPasswordBox}"
                     material:HintAssist.Hint="Password"/>
                     <PasswordBox
+                    x:Name="txtAgainPassword"
                     Width="250"
                     Margin="10"
                     Style="{StaticResource MaterialDesignFilledPasswordBox}"

@@ -32,26 +32,29 @@
                         <StackPanel Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center">
 
                             <TextBox
+                                x:Name="txtLogin"
                                 Style="{StaticResource MaterialDesignFilledTextBox}"
                                 materialDesign:HintAssist.Hint="Login" Width="240" IsReadOnly="True"/>
 
                             <TextBox
+                                x:Name="txtName"
                                 Style="{StaticResource MaterialDesignFilledTextBox}"
                                 materialDesign:HintAssist.Hint="Name" Width="240" Margin="0,20,0,20"/>
 
                             <PasswordBox
+                                 x:Name="txtPassword"
                                  Style="{StaticResource MaterialDesignFilledPasswordBox}"
-                                 materialDesign:HintAssist.Hint="Password" Width="240"/>
+                                 materialDesign:HintAssist.Hint="New Password" Width="240"/>
                         </StackPanel>
 
                         <StackPanel Grid.Row="2" Orientation="Vertical" Margin="37,0,37,0" VerticalAlignment="Center">
-                            <Button Background="Transparent" Height="40" Content="Edit" Foreground="Black" x:Name="btnEdit" />
+                            <Button Background="Transparent" Height="40" Content="Edit" Foreground="Black" x:Name="btnEdit" Click="btnEdit_Click" />
                         </StackPanel>
 
                         <StackPanel Grid.Row="1" Orientation="Vertical" VerticalAlignment="Center">
-                            <TextBlock Text="Order count:" FontSize="22" x:Name="txtOrderCount"/>
-                            <TextBlock Text="Spent: " FontSize="22" x:Name="txtSpent"/>
-                            <TextBlock Text="Role: " FontSize="22" x:Name="txtRole"/>
+                            <TextBlock x:Name="txtOrderCount" Text="Order count:" FontSize="22"/>
+                            <TextBlock x:Name="txtSpent" Text="Spent: " FontSize="22"/>
+                            <TextBlock x:Name="txtRole" Text="Role: " FontSize="22"/>
                         </StackPanel>
                     </Grid>
                 </StackPanel>

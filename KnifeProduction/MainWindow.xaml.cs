@@ -16,6 +16,7 @@ using System.Windows.Shapes;
 using KnifeProduction.Data;
 using KnifeProduction.Pages;
 using KnifeProduction.Windws;
+using KnifeProduction.Data.Model;
 
 namespace KnifeProduction
 {
@@ -24,12 +25,18 @@ namespace KnifeProduction
     /// </summary>
     public partial class MainWindow : Window
     {
-        public static Client Client;
-        public MainWindow(Client client)
+        public static User User;
+        public MainWindow(User user)
         {
-            Client = client;
+            User = user;
             InitializeComponent();
-            
+            if (DataBaseRequestMethods.GetAdminRole(User.Login) == false)
+            {
+                btnOrder.Visibility = Visibility.Hidden;
+                btnCreateKnife.Visibility = Visibility.Hidden;
+                btnClientOrderKnife.Visibility = Visibility.Hidden;
+            }
+
         }
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
@@ -56,22 +63,23 @@ namespace KnifeProduction
 
         private void btnAccount_Click(object sender, RoutedEventArgs e)
         {
-            fContainer.Navigate(new Account(Client));
+          //  fContainer.Navigate(new Account(User));D
+               fContainer.Navigate(new AddBackrestPage());
         }
 
         private void btnMarket_Click(object sender, RoutedEventArgs e)
         {
-            fContainer.Navigate(new Market(Client));
+            fContainer.Navigate(new Market(User));
         }
 
         private void btnOrder_Click(object sender, RoutedEventArgs e)
         {
-            fContainer.Navigate(new OrderMaterial(Client));
+            fContainer.Navigate(new OrderMaterial(User));
         }
 
         private void btnCreateKnife_Click(object sender, RoutedEventArgs e)
         {
-            fContainer.Navigate(new CreateKnife(Client));
+            fContainer.Navigate(new CreateKnife(User));
         }
 
         private void btnExit_Click(object sender, RoutedEventArgs e)
@@ -83,7 +91,7 @@ namespace KnifeProduction
 
         private void btnClientOrderKnife_Click(object sender, RoutedEventArgs e)
         {
-            fContainer.Navigate(new ClientOrderKnife(Client));
+            fContainer.Navigate(new ClientOrderKnife(User));
         }
     }
 }

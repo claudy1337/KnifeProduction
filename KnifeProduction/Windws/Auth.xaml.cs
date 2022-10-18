@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using KnifeProduction.Windws;
 using KnifeProduction.Data.Classes;
+using KnifeProduction.Data.Model;
 
 namespace KnifeProduction.Windws
 {
@@ -21,7 +22,7 @@ namespace KnifeProduction.Windws
     /// </summary>
     public partial class Auth : Window
     {
-
+        public User User;
         public Auth()
         {
             InitializeComponent();
@@ -49,10 +50,34 @@ namespace KnifeProduction.Windws
 
         private void btnAuth_Click(object sender, RoutedEventArgs e)
         {
-            Client client = new Client("fdfdf");
-            MainWindow main = new MainWindow(client);
-            main.Show();
-            this.Close();
+            try
+            {
+                if (string.IsNullOrWhiteSpace(txtLogin.Text) || string.IsNullOrWhiteSpace(txtPassword.Password))
+                {
+                    MessageBox.Show("введите логин или пароль");
+                    return;
+                }
+                else
+                {
+                    if (DataBaseRequestMethods.IsCorrectUser(txtLogin.Text, txtPassword.Password))
+                    {
+                        User = DataBaseRequestMethods.GetUser(txtLogin.Text, txtPassword.Password);
+                        MainWindow main = new MainWindow(User);
+                        main.Show();
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("неверный логин или пароль");
+                    }
+                }
+            }
+            catch(Exception)
+            {
+                return;
+            }
+
+            
         }
     }
 }

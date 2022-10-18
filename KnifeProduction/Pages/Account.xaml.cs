@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using KnifeProduction.Data.Classes;
 using KnifeProduction.Pages;
+using KnifeProduction.Data.Model;
 
 namespace KnifeProduction.Pages
 {
@@ -22,16 +23,32 @@ namespace KnifeProduction.Pages
     /// </summary>
     public partial class Account : Page
     {
-        public static Client Client;
-        public Account(Client client)
+        public static User User;
+        public Account(User user)
         {
-            Client = client;
+            User = user;
             InitializeComponent();
+            BindingInformationAccount();
         }
 
         private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            NavigationService.Navigate(new ClientKnifeInformation(Client));
+            NavigationService.Navigate(new ClientKnifeInformation(User));
+        }
+        public void BindingInformationAccount()
+        {
+            txtLogin.Text = User.Login;
+            txtName.Text = User.Name;
+            txtRole.Text = "Role: " + User.Role.Name;
+            txtPassword.Password = User.Password;
+            txtSpent.Text = "Spent: ";
+            txtOrderCount.Text = "Order count:";
+        }
+        private void btnEdit_Click(object sender, RoutedEventArgs e)
+        {
+            DataBaseRequestMethods.EditUserData(User, txtName.Text, txtPassword.Password);
+            MessageBox.Show("даныне успешно поменялись!!!");
+            BindingInformationAccount();
         }
     }
 }

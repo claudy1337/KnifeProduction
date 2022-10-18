@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using KnifeProduction.Pages;
 using KnifeProduction.Data.Classes;
+using KnifeProduction.Data.Model;
 
 namespace KnifeProduction.Windws
 {
@@ -21,6 +22,7 @@ namespace KnifeProduction.Windws
     /// </summary>
     public partial class Registration : Window
     {
+        public static User currentUser;
         public Registration()
         {
             InitializeComponent();
@@ -47,10 +49,42 @@ namespace KnifeProduction.Windws
 
         private void btnReg_Click(object sender, RoutedEventArgs e)
         {
-            Client client = new Client("vaffa");
-            MainWindow mainWindow = new MainWindow(client);
-            mainWindow.Show();
-            this.Close();
+            try
+            {
+                if (string.IsNullOrWhiteSpace(txtLogin.Text) || string.IsNullOrWhiteSpace(txtPassword.Password) || 
+                    string.IsNullOrWhiteSpace(txtName.Text) || string.IsNullOrWhiteSpace(txtAgainPassword.Password)){
+
+                    MessageBox.Show("заполните все поля");
+                }
+                else
+                {
+                    if (DataBaseRequestMethods.IsCorrectUser(txtLogin.Text, txtPassword.Password) == false &&
+                        DataBaseRequestMethods.GetAdminRole(txtLogin.Text) == false)
+                    {
+                        if (txtPassword.Password == txtAgainPassword.Password)
+                        {
+                            DataBaseRequestMethods.AddUser(txtLogin.Text, txtName.Text, txtPassword.Password);
+                            currentUser = DataBaseRequestMethods.CurrentUser;
+                            MainWindow main = new MainWindow(currentUser);
+                            main.Show();
+                            this.Close();
+                        }
+                        else
+                            MessageBox.Show("пароли не совпадают!!!");
+                    }
+                    else
+                        MessageBox.Show("такой пользователь уже существует!!!");
+                }
+            }
+            catch(Exception)
+            {
+                return;
+            }
+                
+            //Client client = new Client("vaffa");
+            //MainWindow mainWindow = new MainWindow(User);
+            //mainWindow.Show();
+            //this.Close();
         }
     }
 }
