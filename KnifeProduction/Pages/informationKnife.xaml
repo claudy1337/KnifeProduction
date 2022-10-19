@@ -22,7 +22,7 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
                 <material:Card Margin="15" Grid.Row="0">
-                    <Image Source="/Resources/default_knife.png" Margin="15"/>
+                    <Image Source="{Binding Image}" Margin="15"/>
                 </material:Card>
                 <material:Card Grid.Row="1" Margin="15">
                     <Grid>
@@ -36,13 +36,8 @@
                             <material:PackIcon x:Name="btnMinus" MouseLeftButtonDown="btnMinus_MouseLeftButtonDown" Kind="Minus" VerticalAlignment="Center" Width="40" Height="40"/>
                             <TextBox PreviewTextInput="txtCount_PreviewTextInput" FontSize="40" x:Name="txtCount" Text="1"  Style="{StaticResource MaterialDesignComboBoxEditableTextBox}" Margin="5,0,5,0"/>
                             <material:PackIcon x:Name="btnPlus" MouseLeftButtonDown="btnPlus_MouseLeftButtonDown" Kind="Plus" VerticalAlignment="Center" Width="40" Height="40"/>
-
-                            
                         </StackPanel>
-                        <Button Margin="10" Grid.Row="2" Background="Transparent" Height="40" Content="Buy" Foreground="Black" Cursor="Hand"/>
-                        <StackPanel Grid.Row="2">
-                            
-                        </StackPanel>
+                        <Button x:Name="btnBuyKnive" Click="btnBuyKnive_Click" Margin="10" Grid.Row="2" Background="Transparent" Height="40" Content="Buy" Foreground="Black" Cursor="Hand"/>
                     </Grid>
                 </material:Card>
             </Grid>

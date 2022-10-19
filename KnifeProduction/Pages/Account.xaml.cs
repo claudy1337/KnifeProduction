@@ -40,7 +40,7 @@ namespace KnifeProduction.Pages
         }
         public void BindingInformationAccount()
         {
-            var clientKnife = DataBaseRequestMethods.GetOrderKnive(User.Login);
+            var clientKnife = DataBaseRequestOrderKnive.GetListOrderKnive(User);
             lstvKnife.ItemsSource = clientKnife;
             txtLogin.Text = User.Login;
             txtName.Text = User.Name;
@@ -51,7 +51,7 @@ namespace KnifeProduction.Pages
         }
         private void btnEdit_Click(object sender, RoutedEventArgs e)
         {
-            DataBaseRequestMethods.EditUserData(User, txtName.Text, txtPassword.Password);
+            DataBaseRequestUser.EditUserData(User, txtName.Text, txtPassword.Password);
             MessageBox.Show("даныне успешно поменялись!!!");
             BindingInformationAccount();
         }

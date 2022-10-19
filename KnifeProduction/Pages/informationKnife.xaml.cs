@@ -44,7 +44,7 @@ namespace KnifeProduction.Pages
             if (countKnife > 1)
             {
                 countKnife--;
-                price = DataBaseRequestMethods.KniveSumCalcul(Knives, countKnife);
+                price = DataBaseRequestKnive.KniveSumCalcul(Knives, countKnife);
                 txtCount.Text = countKnife.ToString();
                 txtPrice.Text = "Price: " + price.ToString();
             }
@@ -59,9 +59,9 @@ namespace KnifeProduction.Pages
                 countKnife++;
                 if (txtCount.Text == "0")
                 {
-                    price = DataBaseRequestMethods.KniveSumCalcul(Knives, countKnife);
+                    price = DataBaseRequestKnive.KniveSumCalcul(Knives, countKnife);
                 }
-                price = DataBaseRequestMethods.KniveSumCalcul(Knives, countKnife);
+                price = DataBaseRequestKnive.KniveSumCalcul(Knives, countKnife);
                 txtPrice.Text = "Price: " + price.ToString();
                 txtCount.Text = countKnife.ToString();
             }
@@ -104,8 +104,17 @@ namespace KnifeProduction.Pages
             txtObuh.Text = "Blade Obuh: " + Knives.Blade.Obuh.Name;
             txtFalsehood.Text = "Blade Falsehood: " + Knives.Blade.Falsehood.Name;
             txtIsHole.Text = "isHole: " + Knives.isHole;
-            txtPrice.Text = "Price: " + DataBaseRequestMethods.KniveSumCalcul(Knives, 1);
+            txtPrice.Text = "Price: " + DataBaseRequestKnive.KniveSumCalcul(Knives, countKnife);
+            
+            this.DataContext = Knives.Blade.Falsehood.Image;
         }
-        
+
+        private void btnBuyKnive_Click(object sender, RoutedEventArgs e)
+        {
+            priceKnife = DataBaseRequestKnive.KniveSumCalcul(Knives, countKnife);
+            DataBaseRequestOrderKnive.AddOrderKnife(User, Knives, countKnife,Convert.ToInt32(priceKnife));
+            MessageBox.Show($"buying {Knives.Name} in {countKnife}");
+            NavigationService.Navigate(new Market(User));
+        }
     }
 }

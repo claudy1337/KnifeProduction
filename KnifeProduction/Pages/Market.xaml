@@ -23,7 +23,7 @@
                     <RowDefinition Height="100"/>
                 </Grid.RowDefinitions>
                 <StackPanel Grid.Row="2" VerticalAlignment="Center">
-                    <Button Margin="10" Background="Transparent" Height="40" Content="Enter" Foreground="Black" x:Name="SaveSortValue"/>
+                    <Button Margin="10" Background="Transparent" Height="40" Content="Enter" Foreground="Black" x:Name="SaveSortValue" Click="SaveSortValue_Click"/>
                     <TextBlock Text="Clear" HorizontalAlignment="Right" Margin="0,0,12,0" FontSize="15"/>
                 </StackPanel>
                 <TextBlock Text="Market Knife" FontSize="25" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>

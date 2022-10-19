@@ -58,14 +58,15 @@ namespace KnifeProduction.Windws
                 }
                 else
                 {
-                    if (DataBaseRequestMethods.IsCorrectUser(txtLogin.Text, txtPassword.Password) == false &&
-                        DataBaseRequestMethods.GetAdminRole(txtLogin.Text) == false)
+                    if (DataBaseRequestUser.IsCorrectUser(txtLogin.Text, txtPassword.Password) == false &&
+                        DataBaseRequestUser.GetAdminRole(txtLogin.Text) == false)
                     {
                         if (txtPassword.Password == txtAgainPassword.Password)
                         {
-                            DataBaseRequestMethods.AddUser(txtLogin.Text, txtName.Text, txtPassword.Password);
-                            currentUser = DataBaseRequestMethods.CurrentUser;
+                            DataBaseRequestUser.AddUser(txtLogin.Text, txtName.Text, txtPassword.Password);
+                            currentUser = DataBaseRequestUser.CurrentUser;
                             MainWindow main = new MainWindow(currentUser);
+                            MessageBox.Show($"Welcome: {currentUser.Name}");
                             main.Show();
                             this.Close();
                         }
@@ -80,11 +81,6 @@ namespace KnifeProduction.Windws
             {
                 return;
             }
-                
-            //Client client = new Client("vaffa");
-            //MainWindow mainWindow = new MainWindow(User);
-            //mainWindow.Show();
-            //this.Close();
         }
     }
 }

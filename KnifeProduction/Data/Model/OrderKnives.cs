@@ -17,8 +17,8 @@ namespace KnifeProduction.Data.Model
         public int id { get; set; }
         public Nullable<int> idKnives { get; set; }
         public Nullable<int> idUser { get; set; }
-        public string Count { get; set; }
-        public string Price { get; set; }
+        public Nullable<int> Count { get; set; }
+        public Nullable<int> Price { get; set; }
     
         public virtual Knives Knives { get; set; }
         public virtual User User { get; set; }

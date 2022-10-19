@@ -59,10 +59,11 @@ namespace KnifeProduction.Windws
                 }
                 else
                 {
-                    if (DataBaseRequestMethods.IsCorrectUser(txtLogin.Text, txtPassword.Password))
+                    if (DataBaseRequestUser.IsCorrectUser(txtLogin.Text, txtPassword.Password))
                     {
-                        User = DataBaseRequestMethods.GetUser(txtLogin.Text, txtPassword.Password);
+                        User = DataBaseRequestUser.GetUser(txtLogin.Text, txtPassword.Password);
                         MainWindow main = new MainWindow(User);
+                        MessageBox.Show($"Welcome: {User.Name}");
                         main.Show();
                         this.Close();
                     }

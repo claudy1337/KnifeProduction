@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Хранилище knifeProdactionModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Хранилище knifeProdactionModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Backrest">
           <Key>
             <PropertyRef Name="id" />
@@ -61,7 +61,6 @@
           <Property Name="isHole" Type="bit" Nullable="false" />
           <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Count" Type="int" />
-          <Property Name="OrderStatus" Type="bit" />
         </EntityType>
         <EntityType Name="Obuh">
           <Key>
@@ -80,8 +79,8 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="idKnives" Type="int" />
           <Property Name="idUser" Type="int" />
-          <Property Name="Count" Type="nchar" MaxLength="10" />
-          <Property Name="Price" Type="nchar" MaxLength="10" />
+          <Property Name="Count" Type="int" />
+          <Property Name="Price" Type="int" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -267,7 +266,8 @@
             <End Role="User" EntitySet="User" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="knifeProdactionModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -339,7 +339,6 @@
           <NavigationProperty Name="Blade" Relationship="Self.FK_Knives_Blade" FromRole="Knives" ToRole="Blade" />
           <NavigationProperty Name="Handle" Relationship="Self.FK_Knives_Handle" FromRole="Knives" ToRole="Handle" />
           <NavigationProperty Name="OrderKnives" Relationship="Self.FK_OrderKnives_Knives" FromRole="Knives" ToRole="OrderKnives" />
-          <Property Name="OrderStatus" Type="Boolean" />
         </EntityType>
         <EntityType Name="Obuh">
           <Key>
@@ -359,8 +358,8 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="idKnives" Type="Int32" />
           <Property Name="idUser" Type="Int32" />
-          <Property Name="Count" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="Price" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Count" Type="Int32" />
+          <Property Name="Price" Type="Int32" />
           <NavigationProperty Name="Knives" Relationship="Self.FK_OrderKnives_Knives" FromRole="OrderKnives" ToRole="Knives" />
           <NavigationProperty Name="User" Relationship="Self.FK_OrderKnives_User" FromRole="OrderKnives" ToRole="User" />
         </EntityType>
@@ -611,7 +610,6 @@
           <EntitySetMapping Name="Knives">
             <EntityTypeMapping TypeName="knifeProdactionModel.Knives">
               <MappingFragment StoreEntitySet="Knives">
-                <ScalarProperty Name="OrderStatus" ColumnName="OrderStatus" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="idBlade" ColumnName="idBlade" />
                 <ScalarProperty Name="idHandle" ColumnName="idHandle" />

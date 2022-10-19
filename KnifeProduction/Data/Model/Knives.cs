@@ -26,7 +26,6 @@ namespace KnifeProduction.Data.Model
         public bool isHole { get; set; }
         public string Name { get; set; }
         public Nullable<int> Count { get; set; }
-        public Nullable<bool> OrderStatus { get; set; }
     
         public virtual Blade Blade { get; set; }
         public virtual Handle Handle { get; set; }

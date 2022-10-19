@@ -30,7 +30,7 @@ namespace KnifeProduction
         {
             User = user;
             InitializeComponent();
-            if (DataBaseRequestMethods.GetAdminRole(User.Login) == false)
+            if (DataBaseRequestUser.GetAdminRole(User.Login) == false)
             {
                 btnOrder.Visibility = Visibility.Hidden;
                 btnCreateKnife.Visibility = Visibility.Hidden;
@@ -63,8 +63,7 @@ namespace KnifeProduction
 
         private void btnAccount_Click(object sender, RoutedEventArgs e)
         {
-                fContainer.Navigate(new Account(User));
-             //  fContainer.Navigate(new AddBackrestPage());
+            fContainer.Navigate(new Account(User));
         }
 
         private void btnMarket_Click(object sender, RoutedEventArgs e)
