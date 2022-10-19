@@ -45,24 +45,27 @@
                     <CheckBox Content="is hole" FontSize="15"/>
                 </StackPanel>
             </Grid>
-            
         </material:Card>
         <material:Card Grid.Column="1" Margin="15">
             <StackPanel Margin="10">
-                <ListView HorizontalAlignment="Center" x:Name="lstvKnife" SelectionChanged="lstvKnife_SelectionChanged">
-                    <material:Card Opacity="0.9" UniformCornerRadius="5" Background="#9EABBE" Width="320">
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="250"/>
-                                <RowDefinition Height="70"/>
-                            </Grid.RowDefinitions>
-                            <StackPanel Grid.Row="1" VerticalAlignment="Center" Orientation="Vertical">
-                                <TextBlock Text="Name" FontSize="25"/>
-                                <TextBlock Text="Price" FontSize="25"/>
-                            </StackPanel>
-                            <Image RenderOptions.BitmapScalingMode="HighQuality" Source="/Resources/default_knife.png" Grid.Row="0" Width="auto"/>
-                        </Grid>
-                    </material:Card>
+                <ListView HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="lstvKnife" SelectionChanged="lstvKnife_SelectionChanged" Height="430" Width="390">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <material:Card Opacity="0.9" UniformCornerRadius="5" Background="#9EABBE" Width="320">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="250"/>
+                                        <RowDefinition Height="70"/>
+                                    </Grid.RowDefinitions>
+                                    <StackPanel Grid.Row="1" VerticalAlignment="Center" Orientation="Vertical">
+                                        <TextBlock Text="{Binding Name}" FontSize="25"/>
+                                        <TextBlock Text="{Binding Count}" FontSize="25"/>
+                                    </StackPanel>
+                                    <Image RenderOptions.BitmapScalingMode="HighQuality" Source="/Resources/default_knife.png" Grid.Row="0" Width="auto"/>
+                                </Grid>
+                            </material:Card>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
                 </ListView>
             </StackPanel>
         </material:Card>

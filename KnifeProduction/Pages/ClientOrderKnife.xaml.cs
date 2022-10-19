@@ -28,9 +28,15 @@ namespace KnifeProduction.Pages
         {
             User = user;
             InitializeComponent();
+            BindingData();
         }
 
-        private void lstvKnife_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        public void BindingData()
+        {
+            lstvKnife.ItemsSource = DataBaseRequestMethods.GetOrderKnives();
+        }
+
+        private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
         }

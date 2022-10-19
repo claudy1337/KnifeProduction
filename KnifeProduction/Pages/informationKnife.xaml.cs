@@ -24,33 +24,48 @@ namespace KnifeProduction.Pages
     /// </summary>
     public partial class informationKnife : Page
     {
-        int countItem = 1;
-        int price = 100;
+        int countKnife = 1;
+        int price;
         public static User User;
-        public informationKnife(User user)
+        public static Knives Knives;
+        int? priceKnife;
+        int? maxCountKnife;
+        public informationKnife(User user, Knives knives)
         {
             User = user;
+            Knives = knives;
             InitializeComponent();
+            BindingData();
+            maxCountKnife = Knives.Count;
         }
 
         private void btnMinus_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            if (countItem>1)
+            if (countKnife > 1)
             {
-                countItem--;
-                price -= countItem;
+                countKnife--;
+                price = DataBaseRequestMethods.KniveSumCalcul(Knives, countKnife);
+                txtCount.Text = countKnife.ToString();
+                txtPrice.Text = "Price: " + price.ToString();
             }
             
-            txtCount.Text = countItem.ToString();
-            txtPrice.Text = "Price: " + price.ToString();
+            
         }
 
         private void btnPlus_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            countItem++;
-            price += countItem;
-            txtPrice.Text = "Price: " + price.ToString();
-            txtCount.Text = countItem.ToString();
+            if (countKnife < maxCountKnife)
+            {
+                countKnife++;
+                if (txtCount.Text == "0")
+                {
+                    price = DataBaseRequestMethods.KniveSumCalcul(Knives, countKnife);
+                }
+                price = DataBaseRequestMethods.KniveSumCalcul(Knives, countKnife);
+                txtPrice.Text = "Price: " + price.ToString();
+                txtCount.Text = countKnife.ToString();
+            }
+            
         }
 
         private void btnBack_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -73,12 +88,24 @@ namespace KnifeProduction.Pages
                 }
                 Regex regex = new Regex("[^1-9]+");
                 e.Handled = regex.IsMatch(e.Text);
-                countItem = Convert.ToInt32(txtCount.Text);
+                countKnife = Convert.ToInt32(txtCount.Text);
             }
             catch(Exception ex)
             {
                 MessageBox.Show("0 is not count");
             }
         }
+        public void BindingData()
+        {
+            txtKnifeName.Text = Knives.Name;
+            txtCountKnife.Text ="Count: " + Knives.Count.ToString();
+            txtClip.Text = "Handle Clip: " + Knives.Handle.Clip.Name;
+            txtBackrest.Text = "Handle Backrest: " + Knives.Handle.Backrest.Name;
+            txtObuh.Text = "Blade Obuh: " + Knives.Blade.Obuh.Name;
+            txtFalsehood.Text = "Blade Falsehood: " + Knives.Blade.Falsehood.Name;
+            txtIsHole.Text = "isHole: " + Knives.isHole;
+            txtPrice.Text = "Price: " + DataBaseRequestMethods.KniveSumCalcul(Knives, 1);
+        }
+        
     }
 }

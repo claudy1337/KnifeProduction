@@ -24,15 +24,30 @@ namespace KnifeProduction.Pages
     public partial class ClientKnifeInformation : Page
     {
         public static User User;
-        public ClientKnifeInformation(User user)
+        public static OrderKnives OrderKnives;
+        public ClientKnifeInformation(OrderKnives orderKnives, User user)
         {
+            OrderKnives = orderKnives;
             User = user;
             InitializeComponent();
+            BindingData();
         }
 
         private void btnClientOrder_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new Account(User));
+        }
+        public void BindingData()
+        {
+            txtKnifeName.Text = OrderKnives.Knives.Name;
+            txtCountKnife.Text = "Count: " + OrderKnives.Count;
+            txtIsHole.Text = "isHole: " + OrderKnives.Knives.isHole.ToString();
+            txtClip.Text = "Handle Clip: " + OrderKnives.Knives.Handle.Clip.Name;
+            txtBackrest.Text = "Handle Backrest: " + OrderKnives.Knives.Handle.Backrest.Name;
+            txtObuh.Text = "Blade Obuh: " + OrderKnives.Knives.Blade.Obuh.Name;
+            txtFalsehood.Text = "Blade Falsehood: " + OrderKnives.Knives.Blade.Falsehood.Name;
+            txtPrice.Text = "Price: " + OrderKnives.Price.ToString();
+            this.DataContext = OrderKnives.Knives;
         }
     }
 }

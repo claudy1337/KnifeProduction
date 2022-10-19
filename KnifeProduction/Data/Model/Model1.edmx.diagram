@@ -4,18 +4,18 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="68cffb7ce4e84823a67611f882ef962b" Name="Diagram1">
-        <EntityTypeShape EntityType="knifeProdactionModel.Backrest" Width="1.5" PointX="0.75" PointY="8.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="knifeProdactionModel.Blade" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="knifeProdactionModel.Clip" Width="1.5" PointX="0.75" PointY="11.125" IsExpanded="true" />
+      <Diagram DiagramId="9a681e35d32040e6a4b2b427b07ae2ae" Name="Diagram1">
+        <EntityTypeShape EntityType="knifeProdactionModel.Backrest" Width="1.5" PointX="0.75" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="knifeProdactionModel.Blade" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="knifeProdactionModel.Clip" Width="1.5" PointX="0.75" PointY="11.25" IsExpanded="true" />
         <EntityTypeShape EntityType="knifeProdactionModel.Falsehood" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="knifeProdactionModel.Handle" Width="1.5" PointX="3" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="knifeProdactionModel.Handle" Width="1.5" PointX="3" PointY="9.875" IsExpanded="true" />
         <EntityTypeShape EntityType="knifeProdactionModel.Knives" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="knifeProdactionModel.Obuh" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="knifeProdactionModel.OrderKnives" Width="1.5" PointX="7.5" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="knifeProdactionModel.Role" Width="1.5" PointX="3" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="knifeProdactionModel.OrderKnives" Width="1.5" PointX="7.5" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="knifeProdactionModel.Role" Width="1.5" PointX="3" PointY="5.625" IsExpanded="true" />
         <EntityTypeShape EntityType="knifeProdactionModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="knifeProdactionModel.User" Width="1.5" PointX="5.25" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="knifeProdactionModel.User" Width="1.5" PointX="5.25" PointY="5.25" IsExpanded="true" />
         <AssociationConnector Association="knifeProdactionModel.FK_Handle_Backrest" ManuallyRouted="false" />
         <AssociationConnector Association="knifeProdactionModel.FK_Blade_Falsehood" ManuallyRouted="false" />
         <AssociationConnector Association="knifeProdactionModel.FK_Blade_Obuh" ManuallyRouted="false" />

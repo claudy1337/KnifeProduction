@@ -31,7 +31,7 @@
                             <RowDefinition/>
                             <RowDefinition Height="60"/>
                         </Grid.RowDefinitions>
-                        <TextBlock Text="Price: 100" x:Name="txtPrice" Grid.Row="0" VerticalAlignment="Center" FontSize="25"/>
+                        <TextBlock Text="Price: " x:Name="txtPrice" Grid.Row="0" VerticalAlignment="Center" FontSize="25"/>
                         <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
                             <material:PackIcon x:Name="btnMinus" MouseLeftButtonDown="btnMinus_MouseLeftButtonDown" Kind="Minus" VerticalAlignment="Center" Width="40" Height="40"/>
                             <TextBox PreviewTextInput="txtCount_PreviewTextInput" FontSize="40" x:Name="txtCount" Text="1"  Style="{StaticResource MaterialDesignComboBoxEditableTextBox}" Margin="5,0,5,0"/>
@@ -54,13 +54,14 @@
                     <RowDefinition Height="1*"/>
                     <RowDefinition Height="100"/>
                 </Grid.RowDefinitions>
-                <TextBlock Text="Name" Grid.Row="0" FontSize="40" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                <TextBlock x:Name="txtKnifeName" Text="Name" Grid.Row="0" FontSize="40" VerticalAlignment="Center" HorizontalAlignment="Left"/>
                 <StackPanel Grid.Row="1" Margin="10" VerticalAlignment="Center">
-                    <TextBlock Text="Value:Aboba" FontSize="25"/>
-                    <TextBlock Text="Value:Aboba" FontSize="25" Margin="0,5,0,5"/>
-                    <TextBlock Text="Value:Aboba" FontSize="25"/>
-                    <TextBlock Text="Value:Aboba" FontSize="25" Margin="0,5,0,5"/>
-                    <TextBlock Text="Value:Aboba" FontSize="25"/>
+                    <TextBlock x:Name="txtCountKnife" Text="Count: " FontSize="20"/>
+                    <TextBlock x:Name="txtClip" Text="Handle Clip: " FontSize="20" Margin="0,10,0,10"/>
+                    <TextBlock x:Name="txtBackrest" Text="Handle Backrest: " FontSize="20" />
+                    <TextBlock x:Name="txtObuh" Text="Blade Obuh: " FontSize="20" Margin="0,10,0,10"/>
+                    <TextBlock x:Name="txtFalsehood" Text="Blade Falsehood: " FontSize="20" />
+                    <TextBlock x:Name="txtIsHole" Text="isHole: " FontSize="20" Margin="0,10,0,0"/>
                 </StackPanel>
                 <StackPanel Grid.Row="2" Margin="10">
                     <Button x:Name="btnClientOrder" Click="btnClientOrder_Click" Background="Transparent" Height="40" Content="My Order" Foreground="Black" Cursor="Hand"/>

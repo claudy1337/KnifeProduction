@@ -4,16 +4,16 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище knifeProdactionModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище knifeProdactionModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Backrest">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar(max)" />
-          <Property Name="Type" Type="nvarchar(max)" />
           <Property Name="Price" Type="nchar" MaxLength="10" />
           <Property Name="Image" Type="image" />
+          <Property Name="Count" Type="int" />
         </EntityType>
         <EntityType Name="Blade">
           <Key>
@@ -31,15 +31,17 @@
           <Property Name="Name" Type="nvarchar(max)" />
           <Property Name="Price" Type="nchar" MaxLength="10" />
           <Property Name="Image" Type="image" />
+          <Property Name="Count" Type="int" />
         </EntityType>
         <EntityType Name="Falsehood">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="nchar" MaxLength="10" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
           <Property Name="Price" Type="nchar" MaxLength="10" />
           <Property Name="Image" Type="image" />
+          <Property Name="Count" Type="int" />
         </EntityType>
         <EntityType Name="Handle">
           <Key>
@@ -57,8 +59,9 @@
           <Property Name="idBlade" Type="int" Nullable="false" />
           <Property Name="idHandle" Type="int" Nullable="false" />
           <Property Name="isHole" Type="bit" Nullable="false" />
-          <Property Name="Image" Type="image" />
           <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Count" Type="int" />
+          <Property Name="OrderStatus" Type="bit" />
         </EntityType>
         <EntityType Name="Obuh">
           <Key>
@@ -68,6 +71,7 @@
           <Property Name="Name" Type="nvarchar(max)" />
           <Property Name="Price" Type="nchar" MaxLength="10" />
           <Property Name="Image" Type="image" />
+          <Property Name="Count" Type="int" />
         </EntityType>
         <EntityType Name="OrderKnives">
           <Key>
@@ -78,7 +82,6 @@
           <Property Name="idUser" Type="int" />
           <Property Name="Count" Type="nchar" MaxLength="10" />
           <Property Name="Price" Type="nchar" MaxLength="10" />
-          <Property Name="Status" Type="bit" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -264,8 +267,7 @@
             <End Role="User" EntitySet="User" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="knifeProdactionModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -275,9 +277,9 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Type" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Price" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Count" Type="Int32" />
           <NavigationProperty Name="Handle" Relationship="Self.FK_Handle_Backrest" FromRole="Backrest" ToRole="Handle" />
         </EntityType>
         <EntityType Name="Blade">
@@ -299,6 +301,7 @@
           <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Price" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Count" Type="Int32" />
           <NavigationProperty Name="Handle" Relationship="Self.FK_Handle_Clip" FromRole="Clip" ToRole="Handle" />
         </EntityType>
         <EntityType Name="Falsehood">
@@ -306,9 +309,10 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Price" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Count" Type="Int32" />
           <NavigationProperty Name="Blade" Relationship="Self.FK_Blade_Falsehood" FromRole="Falsehood" ToRole="Blade" />
         </EntityType>
         <EntityType Name="Handle">
@@ -330,11 +334,12 @@
           <Property Name="idBlade" Type="Int32" Nullable="false" />
           <Property Name="idHandle" Type="Int32" Nullable="false" />
           <Property Name="isHole" Type="Boolean" Nullable="false" />
-          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Count" Type="Int32" />
           <NavigationProperty Name="Blade" Relationship="Self.FK_Knives_Blade" FromRole="Knives" ToRole="Blade" />
           <NavigationProperty Name="Handle" Relationship="Self.FK_Knives_Handle" FromRole="Knives" ToRole="Handle" />
           <NavigationProperty Name="OrderKnives" Relationship="Self.FK_OrderKnives_Knives" FromRole="Knives" ToRole="OrderKnives" />
+          <Property Name="OrderStatus" Type="Boolean" />
         </EntityType>
         <EntityType Name="Obuh">
           <Key>
@@ -344,6 +349,7 @@
           <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Price" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Count" Type="Int32" />
           <NavigationProperty Name="Blade" Relationship="Self.FK_Blade_Obuh" FromRole="Obuh" ToRole="Blade" />
         </EntityType>
         <EntityType Name="OrderKnives">
@@ -355,7 +361,6 @@
           <Property Name="idUser" Type="Int32" />
           <Property Name="Count" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="Price" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="Status" Type="Boolean" />
           <NavigationProperty Name="Knives" Relationship="Self.FK_OrderKnives_Knives" FromRole="OrderKnives" ToRole="Knives" />
           <NavigationProperty Name="User" Relationship="Self.FK_OrderKnives_User" FromRole="OrderKnives" ToRole="User" />
         </EntityType>
@@ -557,9 +562,9 @@
               <MappingFragment StoreEntitySet="Backrest">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Type" ColumnName="Type" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Count" ColumnName="Count" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -579,6 +584,7 @@
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Count" ColumnName="Count" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -589,6 +595,7 @@
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Count" ColumnName="Count" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -604,12 +611,13 @@
           <EntitySetMapping Name="Knives">
             <EntityTypeMapping TypeName="knifeProdactionModel.Knives">
               <MappingFragment StoreEntitySet="Knives">
+                <ScalarProperty Name="OrderStatus" ColumnName="OrderStatus" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="idBlade" ColumnName="idBlade" />
                 <ScalarProperty Name="idHandle" ColumnName="idHandle" />
                 <ScalarProperty Name="isHole" ColumnName="isHole" />
-                <ScalarProperty Name="Image" ColumnName="Image" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Count" ColumnName="Count" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -620,6 +628,7 @@
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Count" ColumnName="Count" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -631,7 +640,6 @@
                 <ScalarProperty Name="idUser" ColumnName="idUser" />
                 <ScalarProperty Name="Count" ColumnName="Count" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

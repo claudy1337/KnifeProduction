@@ -54,27 +54,6 @@ namespace KnifeProduction.Data.Classes
             }
 
         }
-        public static void AddBackrest(string name)
-        {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            if (openFileDialog.ShowDialog().GetValueOrDefault())
-            {
-                Model.Backrest backrest = new Backrest();
-                backrest.Image = File.ReadAllBytes(openFileDialog.FileName);
-                backrest.Name = name;
-                Classes.DbConnection.connection.Backrest.Add(backrest);
-                Classes.DbConnection.connection.SaveChanges();
-
-            }
-
-        }
-        public static bool GetAdminRole(string login)
-        {
-            ObservableCollection<User> admin = new ObservableCollection<User>(DbConnection.connection.User);
-            var currentAdmin = admin.Where(a=>a.Login == login && a.IdRole == 1).FirstOrDefault();
-            return currentAdmin != null;
-        }
-        
         public static void EditUserData(User oldUserData, string name, string password)
         {
             var user = GetUser(oldUserData.Login, oldUserData.Password);
@@ -83,15 +62,64 @@ namespace KnifeProduction.Data.Classes
             DbConnection.connection.SaveChanges();
         }
 
-
-        public static ObservableCollection<Backrest> GetBarests()
+        public static bool GetAdminRole(string login)
         {
-            return new ObservableCollection<Backrest>(DbConnection.connection.Backrest);
+            ObservableCollection<User> admin = new ObservableCollection<User>(DbConnection.connection.User);
+            var currentAdmin = admin.Where(a=>a.Login == login && a.IdRole == 1).FirstOrDefault();
+            return currentAdmin != null;
         }
-        public static Backrest GetBakres(int id)
+        
+        
+        public static void AddClip(string name)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            if (openFileDialog.ShowDialog().GetValueOrDefault())
+            {
+                Model.Falsehood falsehood = new Falsehood();
+                falsehood.Image = File.ReadAllBytes(openFileDialog.FileName);
+                falsehood.Name = name;
+                Classes.DbConnection.connection.Falsehood.Add(falsehood);
+                Classes.DbConnection.connection.SaveChanges();
+            }
+        }
+
+        public static ObservableCollection<OrderKnives> GetOrderKnives()
+        {
+            return new ObservableCollection<OrderKnives>(DbConnection.connection.OrderKnives);
+        }
+        public static IEnumerable<OrderKnives> GetOrderKnive(string login)
+        {
+            return GetOrderKnives().Where(x => x.User.Login == login);
+        }
+
+        public static ObservableCollection<Knives> GetKnives()
+        {
+            return new ObservableCollection<Knives>(DbConnection.connection.Knives);
+        }
+        public static IEnumerable<Knives> GetKnive(bool status)
+        {
+            return GetKnives().Where(k=>k.OrderStatus == status);
+        }
+        public static int KniveSumCalcul(Knives knives, int count)
+        {
+            int obuh = Convert.ToInt32(knives.Blade.Obuh.Price);
+            int falsehood = Convert.ToInt32(knives.Blade.Falsehood.Price);
+            int clip = Convert.ToInt32(knives.Handle.Clip.Price);
+            int backrest = Convert.ToInt32(knives.Handle.Backrest.Price);
+            int totalAmount = obuh + falsehood + clip + backrest;
+            int commissionMarket = (totalAmount * 15) / 100;
+            return (totalAmount + commissionMarket) * count;
+        }
+
+
+        public static ObservableCollection<Falsehood> GetClips()
+        {
+            return new ObservableCollection<Falsehood>(DbConnection.connection.Falsehood);
+        }
+        public static Falsehood GetBakres(int id)
         {
             
-            return GetBarests().FirstOrDefault(x => x.id == id);
+            return GetClips().FirstOrDefault(x => x.id == id);
         }
 
 

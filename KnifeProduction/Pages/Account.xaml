@@ -52,9 +52,8 @@
                         </StackPanel>
 
                         <StackPanel Grid.Row="1" Orientation="Vertical" VerticalAlignment="Center">
-                            <TextBlock x:Name="txtOrderCount" Text="Order count:" FontSize="22"/>
-                            <TextBlock x:Name="txtSpent" Text="Spent: " FontSize="22"/>
-                            <TextBlock x:Name="txtRole" Text="Role: " FontSize="22"/>
+                            <TextBlock x:Name="txtOrderCount" Text="Order count:" FontSize="25" Margin="0,5,0,5"/>
+                            <TextBlock x:Name="txtRole" Text="Role: " FontSize="25"/>
                         </StackPanel>
                     </Grid>
                 </StackPanel>
@@ -66,22 +65,24 @@
                     <RowDefinition Height="75"/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <ListView Grid.Row="1" HorizontalAlignment="Center" SelectionChanged="ListView_SelectionChanged">
-                    <materialDesign:Card Opacity="0.9" UniformCornerRadius="5" Background="#9EABBE" Width="250">
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="200"/>
-                                <RowDefinition Height="70"/>
-                            </Grid.RowDefinitions>
-                            <StackPanel Grid.Row="1" VerticalAlignment="Center" Orientation="Vertical">
-                                <TextBlock Text="Name" FontSize="25"/>
-                                <TextBlock Text="Price" FontSize="25"/>
-                            </StackPanel>
-                            <Image RenderOptions.BitmapScalingMode="HighQuality" Source="/Resources/default_knife.png" Grid.Row="0" Width="auto"/>
-                        </Grid>
-                    </materialDesign:Card>
-                    
-                    
+                <ListView x:Name="lstvKnife" Grid.Row="1" HorizontalAlignment="Center" SelectionChanged="ListView_SelectionChanged">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <materialDesign:Card Opacity="0.9" UniformCornerRadius="5" Background="#9EABBE" Width="250">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="200"/>
+                                        <RowDefinition Height="70"/>
+                                    </Grid.RowDefinitions>
+                                    <StackPanel Grid.Row="1" VerticalAlignment="Center" Orientation="Vertical">
+                                        <TextBlock Text="{Binding Knives.Name}" FontSize="25"/>
+                                        <TextBlock Text="{Binding Price}" FontSize="25"/>
+                                    </StackPanel>
+                                    <Image x:Name="imgKnife" RenderOptions.BitmapScalingMode="HighQuality" Source="/Resources/default_knife.png" Grid.Row="0" Width="auto"/>
+                                </Grid>
+                            </materialDesign:Card>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
                 </ListView>
                 <TextBlock Text="Your Knife" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="25"/>
             </Grid>

@@ -65,7 +65,6 @@
                 </StackPanel>
             </StackPanel>
 
-
             <StackPanel Grid.Row="2" Grid.Column="1" Margin="10" Orientation="Vertical">
                 <TextBox
                      x:Name="txtName"

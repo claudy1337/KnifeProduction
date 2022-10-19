@@ -24,6 +24,7 @@ namespace KnifeProduction.Pages
     public partial class Account : Page
     {
         public static User User;
+        public static OrderKnives OrderKnives;
         public Account(User user)
         {
             User = user;
@@ -33,16 +34,20 @@ namespace KnifeProduction.Pages
 
         private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            NavigationService.Navigate(new ClientKnifeInformation(User));
+            var knife = lstvKnife.SelectedItem as OrderKnives;
+            OrderKnives = knife;
+            NavigationService.Navigate(new ClientKnifeInformation(OrderKnives, User));
         }
         public void BindingInformationAccount()
         {
+            var clientKnife = DataBaseRequestMethods.GetOrderKnive(User.Login);
+            lstvKnife.ItemsSource = clientKnife;
             txtLogin.Text = User.Login;
             txtName.Text = User.Name;
             txtRole.Text = "Role: " + User.Role.Name;
             txtPassword.Password = User.Password;
-            txtSpent.Text = "Spent: ";
-            txtOrderCount.Text = "Order count:";
+            txtOrderCount.Text = "Order count:" + clientKnife.ToList().Count().ToString();
+            this.DataContext = clientKnife;
         }
         private void btnEdit_Click(object sender, RoutedEventArgs e)
         {

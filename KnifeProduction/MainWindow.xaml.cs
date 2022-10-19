@@ -63,8 +63,8 @@ namespace KnifeProduction
 
         private void btnAccount_Click(object sender, RoutedEventArgs e)
         {
-          //  fContainer.Navigate(new Account(User));D
-               fContainer.Navigate(new AddBackrestPage());
+                fContainer.Navigate(new Account(User));
+             //  fContainer.Navigate(new AddBackrestPage());
         }
 
         private void btnMarket_Click(object sender, RoutedEventArgs e)

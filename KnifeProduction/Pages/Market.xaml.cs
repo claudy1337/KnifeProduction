@@ -27,11 +27,13 @@ namespace KnifeProduction.Pages
         {
             User = user;
             InitializeComponent();
+            lstvKnife.ItemsSource = DataBaseRequestMethods.GetKnive(false);
         }
 
         private void lstvKnife_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            NavigationService.Navigate(new informationKnife(User));
+            var selectedKnive = lstvKnife.SelectedItem as Knives;
+            NavigationService.Navigate(new informationKnife(User, selectedKnive));
         }
     }
 }
