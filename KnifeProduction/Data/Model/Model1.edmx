@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище knifeProdactionModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище knifeProdactionModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Backrest">
           <Key>
             <PropertyRef Name="id" />
@@ -22,6 +22,7 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="idObuh" Type="int" />
           <Property Name="idFalsehood" Type="int" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Clip">
           <Key>
@@ -50,6 +51,7 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="idBackrest" Type="int" />
           <Property Name="idClip" Type="int" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Knives">
           <Key>
@@ -266,8 +268,7 @@
             <End Role="User" EntitySet="User" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="knifeProdactionModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -292,6 +293,7 @@
           <NavigationProperty Name="Falsehood" Relationship="Self.FK_Blade_Falsehood" FromRole="Blade" ToRole="Falsehood" />
           <NavigationProperty Name="Obuh" Relationship="Self.FK_Blade_Obuh" FromRole="Blade" ToRole="Obuh" />
           <NavigationProperty Name="Knives" Relationship="Self.FK_Knives_Blade" FromRole="Blade" ToRole="Knives" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Clip">
           <Key>
@@ -325,6 +327,7 @@
           <NavigationProperty Name="Backrest" Relationship="Self.FK_Handle_Backrest" FromRole="Handle" ToRole="Backrest" />
           <NavigationProperty Name="Clip" Relationship="Self.FK_Handle_Clip" FromRole="Handle" ToRole="Clip" />
           <NavigationProperty Name="Knives" Relationship="Self.FK_Knives_Handle" FromRole="Handle" ToRole="Knives" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Knives">
           <Key>
@@ -570,6 +573,7 @@
           <EntitySetMapping Name="Blade">
             <EntityTypeMapping TypeName="knifeProdactionModel.Blade">
               <MappingFragment StoreEntitySet="Blade">
+                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="idObuh" ColumnName="idObuh" />
                 <ScalarProperty Name="idFalsehood" ColumnName="idFalsehood" />
@@ -601,6 +605,7 @@
           <EntitySetMapping Name="Handle">
             <EntityTypeMapping TypeName="knifeProdactionModel.Handle">
               <MappingFragment StoreEntitySet="Handle">
+                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="idBackrest" ColumnName="idBackrest" />
                 <ScalarProperty Name="idClip" ColumnName="idClip" />

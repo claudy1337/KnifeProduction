@@ -44,7 +44,15 @@ namespace KnifeProduction.Pages
             lstvKnife.ItemsSource = clientKnife;
             txtLogin.Text = User.Login;
             txtName.Text = User.Name;
-            txtRole.Text = "Role: " + User.Role.Name;
+            if (User.IdRole == 1)
+            {
+                txtRole.Text = "Role: Admin";
+            }
+            else
+            {
+                txtRole.Text = "Role: User";
+            }
+            
             txtPassword.Password = User.Password;
             txtOrderCount.Text = "Order count:" + clientKnife.ToList().Count().ToString();
             this.DataContext = clientKnife;

@@ -39,6 +39,7 @@ namespace KnifeProduction.Pages
         }
         public void BindingData()
         {
+            txtKnifeOwner.Text = "Knife Owner: " + OrderKnives.User.Name;
             txtKnifeName.Text = OrderKnives.Knives.Name;
             txtCountKnife.Text = "Count: " + OrderKnives.Count;
             txtIsHole.Text = "isHole: " + OrderKnives.Knives.isHole.ToString();

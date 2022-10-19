@@ -23,6 +23,7 @@ namespace KnifeProduction.Data.Model
         public int id { get; set; }
         public Nullable<int> idBackrest { get; set; }
         public Nullable<int> idClip { get; set; }
+        public string Name { get; set; }
     
         public virtual Backrest Backrest { get; set; }
         public virtual Clip Clip { get; set; }

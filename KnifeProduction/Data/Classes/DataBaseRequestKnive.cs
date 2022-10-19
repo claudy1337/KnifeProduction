@@ -18,14 +18,27 @@ namespace KnifeProduction.Data.Classes
         {
             return new ObservableCollection<Knives>(DbConnection.connection.Knives);
         }
-        public static IEnumerable<Knives> GetKnive(bool status)
+        public static IEnumerable<Knives> GetKnive()
         {
             return GetKnives().Where(k => k.Count > 0);
+        }
+        public static IEnumerable<Knives>GetHandleKnive(int idHandle)
+        {
+            return GetKnives().Where(k=>k.Handle.id == idHandle && k.Count > 0).ToList();
+        }
+        public static IEnumerable<Knives>GetBladeKnive(int idBlade)
+        {
+            return GetKnives().Where(k => k.Blade.id == idBlade && k.Count > 0).ToList();
+        }
+        public static IEnumerable<Knives> GetKnive(int idBlade, int idHandle)
+        {
+            return GetKnives().Where(k => k.Blade.id == idBlade && k.Handle.id == idHandle && k.Count > 0).ToList();
         }
         public static Knives GetKnive(int idHandle, int idBlade, string name)
         {
             return GetKnives().FirstOrDefault(k => k.Name == name || k.Blade.id == idBlade && k.Handle.id == idHandle);
         }
+
         public static Knives GetSortKnive(int idHandle, int idBlade, string name)
         {
             return GetKnives().FirstOrDefault(k=> k.Name == name || k.idHandle == idHandle || k.idBlade == idBlade);

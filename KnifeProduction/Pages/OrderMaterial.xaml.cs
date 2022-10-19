@@ -47,7 +47,7 @@ namespace KnifeProduction.Pages
         }
         public void Getter()
         {
-            var aboba = DataBaseRequestMethods.GetBakres(3);
+            var aboba = DataBaseRequestUploadImage.GetBakres(3);
             this.DataContext = aboba;
         }
     }

@@ -23,6 +23,7 @@ namespace KnifeProduction.Data.Model
         public int id { get; set; }
         public Nullable<int> idObuh { get; set; }
         public Nullable<int> idFalsehood { get; set; }
+        public string Name { get; set; }
     
         public virtual Falsehood Falsehood { get; set; }
         public virtual Obuh Obuh { get; set; }

@@ -30,13 +30,13 @@ namespace KnifeProduction.Pages
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-            DataBaseRequestMethods.AddClip(txtName.Text);
+            DataBaseRequestUploadImage.AddClip(txtName.Text);
         }
         int count = 0;
         private void btnGett_Click(object sender, RoutedEventArgs e)
         {
             count++;
-            var aboba = DataBaseRequestMethods.GetBakres(count);
+            var aboba = DataBaseRequestUploadImage.GetBakres(count);
             this.DataContext = aboba;
         }
     }

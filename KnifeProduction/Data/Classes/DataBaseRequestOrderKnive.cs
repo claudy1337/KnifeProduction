@@ -21,6 +21,15 @@ namespace KnifeProduction.Data.Classes
         {
             return GetOrderKnives().Where(k=>k.idUser == user.id);
         }
+        public static IEnumerable<OrderKnives> GetBladeOrderKnive(int idBlade)
+        {
+
+        }
+        public static IEnumerable<OrderKnives> GetHandleKnive(int idHandle)
+        {
+
+        }
+
         public static OrderKnives GetOrderKnive(Knives knives)
         {
             return GetOrderKnives().FirstOrDefault(k=> k.idKnives == knives.id);

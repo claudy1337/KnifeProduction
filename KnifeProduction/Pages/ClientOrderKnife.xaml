@@ -23,28 +23,25 @@
                     <RowDefinition Height="100"/>
                 </Grid.RowDefinitions>
                 <StackPanel Grid.Row="2" VerticalAlignment="Center">
-                    <Button Margin="10" Background="Transparent" Height="40" Content="Enter" Foreground="Black" x:Name="SaveSortValue"/>
-                    <TextBlock Text="Clear" HorizontalAlignment="Right" Margin="0,0,12,0" FontSize="15"/>
+                    <Button Margin="10" Background="Transparent" Height="40" Content="Account" Foreground="Black" x:Name="btnAccount" Click="btnAccount_Click"/>
+                    <TextBlock x:Name="txtClear" MouseLeftButtonDown="txtClear_MouseLeftButtonDown" Text="Clear" HorizontalAlignment="Right" Margin="0,0,12,0" FontSize="15"/>
                 </StackPanel>
                 <TextBlock Text="Client Order" FontSize="25" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                 <StackPanel Grid.Row="1" VerticalAlignment="Center" Margin="15">
-                    
-                    <TextBox
-                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                     material:HintAssist.Hint="Price"/>
+
 
                     <ComboBox
-                      DisplayMemberPath=""
+                      SelectionChanged="CBHandles_SelectionChanged"
+                      DisplayMemberPath="Name"
+                      x:Name="CBHandles"
                       Margin="0,18,0,18"
                       Style="{StaticResource MaterialDesignFloatingHintComboBox}"
-                      material:HintAssist.Hint="Material Pens"/>
-                    <ComboBox
-                      DisplayMemberPath=""
-                      Margin="0,0,0,18"
-                      Style="{StaticResource MaterialDesignFloatingHintComboBox}"
-                      material:HintAssist.Hint="Material Pens"/>
+                      material:HintAssist.Hint="Material Handles"/>
 
                     <ComboBox
+                      SelectionChanged="CBBlades_SelectionChanged"
+                      DisplayMemberPath="Name"
+                      x:Name="CBBlades"
                       Margin="0,0,0,18"
                       Style="{StaticResource MaterialDesignFloatingHintComboBox}"
                       material:HintAssist.Hint="Material Blades"/>
@@ -54,20 +51,21 @@
         </material:Card>
         <material:Card Grid.Column="1" Margin="15">
             <StackPanel Margin="10">
-                <ListView x:Name="lstvKnife" Grid.Row="1" HorizontalAlignment="Center" SelectionChanged="ListView_SelectionChanged">
+                <ListView x:Name="lstvKnife" Grid.Row="1" SelectionChanged="ListView_SelectionChanged" HorizontalAlignment="Center" Width="300" Height="425">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <material:Card Opacity="0.9" UniformCornerRadius="5" Background="#9EABBE" Width="250">
                                 <Grid>
                                     <Grid.RowDefinitions>
-                                        <RowDefinition Height="200"/>
-                                        <RowDefinition Height="70"/>
+                                        <RowDefinition Height="170"/>
+                                        <RowDefinition Height="125"/>
                                     </Grid.RowDefinitions>
                                     <StackPanel Grid.Row="1" VerticalAlignment="Center" Orientation="Vertical">
-                                        <TextBlock Text="{Binding User.Name}" FontSize="25"/>
-                                        <TextBlock Text="{Binding Knives.Name}" FontSize="25"/>
-                                        <TextBlock Text="{Binding Price}" FontSize="25"/>
-                                    </StackPanel>
+                                        <TextBlock Text="{Binding User.Name}" FontSize="21"/>
+                                        <TextBlock Text="{Binding Knives.Name}" FontSize="21"/>
+                                        <TextBlock Text="{Binding Count}" FontSize="21"/>
+                                        <TextBlock Text="{Binding Price}" FontSize="21"/>
+                            </StackPanel>
                                     <Image x:Name="imgKnife" RenderOptions.BitmapScalingMode="HighQuality" Source="/Resources/default_knife.png" Grid.Row="0" Width="auto"/>
                                 </Grid>
                             </material:Card>

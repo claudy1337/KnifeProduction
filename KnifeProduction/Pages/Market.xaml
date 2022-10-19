@@ -19,30 +19,32 @@
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="100"/>
-                    <RowDefinition/>
+                    <RowDefinition Height="254"/>
                     <RowDefinition Height="100"/>
                 </Grid.RowDefinitions>
                 <StackPanel Grid.Row="2" VerticalAlignment="Center">
-                    <Button Margin="10" Background="Transparent" Height="40" Content="Enter" Foreground="Black" x:Name="SaveSortValue" Click="SaveSortValue_Click"/>
-                    <TextBlock Text="Clear" HorizontalAlignment="Right" Margin="0,0,12,0" FontSize="15"/>
+                    <Button Margin="10" Background="Transparent" Height="40" Content="Account" Foreground="Black" x:Name="btnAccount" Click="btnAccount_Click"/>
+                    <TextBlock x:Name="txtClear" MouseLeftButtonDown="txtClear_MouseLeftButtonDown"  Text="Clear" HorizontalAlignment="Right" Margin="0,0,12,0" FontSize="15"/>
                 </StackPanel>
                 <TextBlock Text="Market Knife" FontSize="25" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                 <StackPanel Grid.Row="1" VerticalAlignment="Center" Margin="15">
-                    <TextBox
-                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                     material:HintAssist.Hint="Price"/>
+                   
 
                     <ComboBox
+                      SelectionChanged="CBHandles_SelectionChanged"
+                      DisplayMemberPath="Name"
+                      x:Name="CBHandles"
                       Margin="0,18,0,18"
                       Style="{StaticResource MaterialDesignFloatingHintComboBox}"
-                      material:HintAssist.Hint="Material Pens"/>
+                      material:HintAssist.Hint="Material Handles"/>
 
                     <ComboBox
+                      SelectionChanged="CBBlades_SelectionChanged"
+                      DisplayMemberPath="Name"
+                      x:Name="CBBlades"
                       Margin="0,0,0,18"
                       Style="{StaticResource MaterialDesignFloatingHintComboBox}"
                       material:HintAssist.Hint="Material Blades"/>
-
-                    <CheckBox Content="is hole" FontSize="15"/>
                 </StackPanel>
             </Grid>
         </material:Card>

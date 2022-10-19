@@ -32,12 +32,13 @@
         <material:Card Grid.Column="1" Margin="10">
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="100"/>
+                    <RowDefinition Height="90"/>
                     <RowDefinition Height="1*"/>
                     <RowDefinition Height="100"/>
                 </Grid.RowDefinitions>
                 <TextBlock x:Name="txtKnifeName" Text="Name" Grid.Row="0" FontSize="40" VerticalAlignment="Center" HorizontalAlignment="Left"/>
                 <StackPanel Grid.Row="1" Margin="10" VerticalAlignment="Center">
+                    <TextBlock x:Name="txtKnifeOwner" Text="Knife Owner:" FontSize="20" Margin="0,0,0,10"/>
                     <TextBlock x:Name="txtCountKnife" Text="Count" FontSize="20"/>
                     <TextBlock x:Name="txtClip" Text="Handle Clip: " FontSize="20" Margin="0,10,0,10"/>
                     <TextBlock x:Name="txtBackrest" Text="Handle Backrest: " FontSize="20" />
