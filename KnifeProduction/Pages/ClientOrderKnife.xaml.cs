@@ -74,6 +74,7 @@ namespace KnifeProduction.Pages
             catch(Exception)
             {
                 MessageBox.Show("dont search");
+                return;
             }
         }
 
@@ -94,6 +95,7 @@ namespace KnifeProduction.Pages
             catch (Exception)
             {
                 MessageBox.Show("dont search");
+                return;
             }
         }
     }

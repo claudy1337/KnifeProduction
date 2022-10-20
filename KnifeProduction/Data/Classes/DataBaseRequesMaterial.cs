@@ -15,6 +15,7 @@ namespace KnifeProduction.Data.Classes
         {
             return new ObservableCollection<Falsehood>(DbConnection.connection.Falsehood);
         }
+
         public static IEnumerable<Falsehood> GetFalsehood(string name)
         {
             return GetFalsehoods().Where(f=>f.Name == name).ToList();
@@ -87,6 +88,27 @@ namespace KnifeProduction.Data.Classes
                 OldBackrest.Count += count;
                 DbConnection.connection.SaveChanges();
             }
+
+        }
+
+
+        public static ObservableCollection<Handle> GetHandles()
+        {
+            return new ObservableCollection<Handle>(DbConnection.connection.Handle);
+        }
+        public static Handle GetHandle(int Idbackrest, int Idclip)
+        {
+            return GetHandles().FirstOrDefault(h => h.idBackrest == Idbackrest && h.idClip == Idclip);
+
+        }
+
+        public static ObservableCollection<Blade> GetBlades()
+        {
+            return new ObservableCollection<Blade>(DbConnection.connection.Blade);
+        }
+        public static Blade GetBlade(int Idfalshehood, int Idobuh)
+        {
+            return GetBlades().FirstOrDefault(h => h.idFalsehood == Idfalshehood && h.idObuh == Idobuh);
 
         }
     }

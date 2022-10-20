@@ -93,6 +93,7 @@ namespace KnifeProduction.Pages
             catch(Exception ex)
             {
                 MessageBox.Show("0 is not count");
+                return;
             }
         }
         public void BindingData()

@@ -31,7 +31,7 @@ namespace KnifeProduction.Pages
             InitializeComponent();
             Getter();
         }
-
+        
         private void btnPlus_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             countItem++;
@@ -61,6 +61,7 @@ namespace KnifeProduction.Pages
                 if (CBTypeMaterial.SelectedIndex == 0 && CBBaseMaterial.SelectedIndex == 0)
                 {
                     CBDetailMaterial.ItemsSource = DbConnection.connection.Obuh.ToList();
+                    
                 }
                 else if (CBTypeMaterial.SelectedIndex == 0 && CBBaseMaterial.SelectedIndex == 1)
                 {
@@ -82,8 +83,32 @@ namespace KnifeProduction.Pages
         }
         
         private void CBDetailMaterial_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        { 
-
+        {
+            var selectedObuh = CBDetailMaterial.SelectedItem as Obuh;
+            var selectedClip = CBDetailMaterial.SelectedItem as Clip;
+            var selectedBackrest = CBDetailMaterial.SelectedItem as Backrest;
+            var selectedFalsehood = CBDetailMaterial.SelectedItem as Falsehood;
+            if (selectedObuh != null)
+            {
+                var obuh = DataBaseRequesMaterial.GetObuh(selectedObuh.Name);
+                this.DataContext = obuh;
+            }
+            else if (selectedClip != null)
+            {
+                var clip = DataBaseRequesMaterial.GetClip(selectedClip.Name);
+                this.DataContext = clip;
+            }
+            else if (selectedBackrest != null)
+            {
+                var backrest = DataBaseRequesMaterial.GetBackrest(selectedBackrest.Name);
+                this.DataContext = backrest;
+            }
+            else if (selectedFalsehood != null)
+            {
+                var falsehood = DataBaseRequesMaterial.GetFalsehood(selectedFalsehood.Name);
+                this.DataContext = falsehood;
+            }
+           
         }
 
         private void CBTypeMaterial_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -115,7 +140,6 @@ namespace KnifeProduction.Pages
                 MessageBox.Show("dont search");
             }
         }
-
         private void SaveDataMaterial_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -126,6 +150,7 @@ namespace KnifeProduction.Pages
                 var selectedBackrest = CBDetailMaterial.SelectedItem as Backrest;
                 if (selectedFalsehood != null)
                 {
+                    
                     DataBaseRequesMaterial.AddFalsehood(selectedFalsehood, countItem);
                 }
                 else if (selectedObuh != null)
