@@ -59,7 +59,22 @@ namespace KnifeProduction.Pages
 
         private void CBBlades_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            try
+            {
+                blade = CBBlades.SelectedItem as Blade;
+                if (CBHandles.SelectedIndex == -1)
+                {
+                    lstvKnife.ItemsSource = DataBaseRequestOrderKnive.GetHandleOrderKnive(blade.id);
+                }
+                else
+                {
+                    lstvKnife.ItemsSource = DataBaseRequestOrderKnive.GetOrderKnive(blade.id, handle.id);
+                }
+            }
+            catch(Exception)
+            {
+                MessageBox.Show("dont search");
+            }
         }
 
         private void CBHandles_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -69,11 +84,11 @@ namespace KnifeProduction.Pages
                 handle = CBHandles.SelectedItem as Handle;
                 if (CBBlades.SelectedIndex == -1)
                 {
-                    lstvKnife.ItemsSource = DataBaseRequestKnive.GetHandleKnive(handle.id);
+                    lstvKnife.ItemsSource = DataBaseRequestOrderKnive.GetHandleOrderKnive(handle.id);
                 }
                 else
                 {
-                    lstvKnife.ItemsSource = DataBaseRequestKnive.GetKnive(blade.id, handle.id);
+                    lstvKnife.ItemsSource = DataBaseRequestOrderKnive.GetOrderKnive(blade.id, handle.id);
                 }
             }
             catch (Exception)

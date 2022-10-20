@@ -36,12 +36,7 @@ namespace KnifeProduction.Data.Classes
         }
         public static Knives GetKnive(int idHandle, int idBlade, string name)
         {
-            return GetKnives().FirstOrDefault(k => k.Name == name || k.Blade.id == idBlade && k.Handle.id == idHandle);
-        }
-
-        public static Knives GetSortKnive(int idHandle, int idBlade, string name)
-        {
-            return GetKnives().FirstOrDefault(k=> k.Name == name || k.idHandle == idHandle || k.idBlade == idBlade);
+            return GetKnives().FirstOrDefault(k => k.Name == name && k.Blade.id == idBlade && k.Handle.id == idHandle);
         }
         public static void AddKnive(int idHandle, int idBlade, string name, int count, bool isHole)
         {

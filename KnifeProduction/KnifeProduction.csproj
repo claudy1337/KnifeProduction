@@ -72,6 +72,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Data\Classes\DataBaseRequesMaterial.cs" />
     <Compile Include="Data\Classes\DataBaseRequestKnive.cs" />
     <Compile Include="Data\Classes\DataBaseRequestOrderKnive.cs" />
     <Compile Include="Data\Classes\DataBaseRequestUploadImage.cs" />

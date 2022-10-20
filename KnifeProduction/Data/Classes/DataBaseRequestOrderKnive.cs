@@ -23,20 +23,24 @@ namespace KnifeProduction.Data.Classes
         }
         public static IEnumerable<OrderKnives> GetBladeOrderKnive(int idBlade)
         {
-
+            return GetOrderKnives().Where(k=>k.Knives.Blade.id == idBlade).ToList();
         }
-        public static IEnumerable<OrderKnives> GetHandleKnive(int idHandle)
+        public static IEnumerable<OrderKnives> GetHandleOrderKnive(int idHandle)
         {
-
+            return GetOrderKnives().Where(k => k.Knives.Handle.id == idHandle).ToList();
+        }
+        public static IEnumerable<OrderKnives> GetOrderKnive(int idBlade, int idHandle)
+        {
+            return GetOrderKnives().Where(k => k.Knives.Handle.id == idHandle && k.Knives.Blade.id == idBlade).ToList();
         }
 
-        public static OrderKnives GetOrderKnive(Knives knives)
+        public static OrderKnives GetOrderKnive(Knives knives, User user)
         {
-            return GetOrderKnives().FirstOrDefault(k=> k.idKnives == knives.id);
+            return GetOrderKnives().FirstOrDefault(k=> k.idKnives == knives.id && k.User.id == user.id);
         }
         public static void AddOrderKnife(User user,Knives knives, int count, int price)
         {
-            var getOrderKnife = GetOrderKnive(knives);
+            var getOrderKnife = GetOrderKnive(knives, user);
             var getKnive = DataBaseRequestKnive.GetKnive(knives.idHandle, knives.idBlade, knives.Name);
             if (getOrderKnife == null)
             {
