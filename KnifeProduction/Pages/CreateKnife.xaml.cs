@@ -81,10 +81,10 @@ namespace KnifeProduction.Pages
         }
         public void BindingData()
         {
-            CBMaterialObuh.ItemsSource = DbConnection.connection.Obuh.ToList();
-            CBMaterialClip.ItemsSource = DbConnection.connection.Clip.ToList();
-            CBMaeterialFalsehood.ItemsSource = DbConnection.connection.Falsehood.ToList();
-            CBMaterialBackrest.ItemsSource = DbConnection.connection.Backrest.ToList();
+            CBMaterialObuh.ItemsSource = DbConnection.connection.Obuh.Where(o=>o.Count>0).ToList();
+            CBMaterialClip.ItemsSource = DbConnection.connection.Clip.Where(c=>c.Count>0).ToList();
+            CBMaeterialFalsehood.ItemsSource = DbConnection.connection.Falsehood.Where(f=>f.Count>0).ToList();
+            CBMaterialBackrest.ItemsSource = DbConnection.connection.Backrest.Where(b=>b.Count>0).ToList();
             //CBMaterialClip.ItemsSource = DataBaseRequesMaterial.GetClip().ToList();
         }
 
