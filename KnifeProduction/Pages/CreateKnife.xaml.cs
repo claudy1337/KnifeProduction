@@ -65,13 +65,19 @@ namespace KnifeProduction.Pages
 
         private void btnCreateKnife_Click(object sender, RoutedEventArgs e)
         {
-            var blades = DataBaseRequesMaterial.GetBlade(Falsehood.id, Obuh.id);
-            var hadles = DataBaseRequesMaterial.GetHandle(Backrest.id, clip.id);
-            if (blades != null && hadles != null)
+            try
             {
+                var blades = DataBaseRequesMaterial.GetBlade(Falsehood.id, Obuh.id);
+                var hadles = DataBaseRequesMaterial.GetHandle(Backrest.id, clip.id);
+                MessageBox.Show($"create knive: {txtName.Text} ib count: {countKnife} add");
                 DataBaseRequestKnive.AddKnive(hadles.id, blades.id, txtName.Text, countKnife, isCheck);
-                MessageBox.Show($"Create knie {txtName.Text}");
+                NavigationService.Navigate(new CreateKnife(User));
             }
+            catch(Exception)
+            {
+                return;
+            }
+            
         }
         public void BindingData()
         {

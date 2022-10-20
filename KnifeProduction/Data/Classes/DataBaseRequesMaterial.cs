@@ -76,6 +76,7 @@ namespace KnifeProduction.Data.Classes
         {
             return new ObservableCollection<Backrest>(DbConnection.connection.Backrest);
         }
+        
         public static IEnumerable<Backrest> GetBackrest(string name)
         {
             return GetBackrests().Where(b=>b.Name == name).ToList();
@@ -89,6 +90,17 @@ namespace KnifeProduction.Data.Classes
                 DbConnection.connection.SaveChanges();
             }
 
+        }
+        public static void MinusMaterial(Handle handle, Blade blade)
+        {
+            var getHandle = GetHandle(handle.Backrest.id, handle.Clip.id);
+            var getBackrest = GetBlade(blade.Falsehood.id, blade.Obuh.id);
+
+            getHandle.Backrest.Count -= 1;
+            getHandle.Clip.Count -= 1;
+            getBackrest.Falsehood.Count -= 1;
+            getBackrest.Obuh.Count -= 1;
+            DbConnection.connection.SaveChanges();
         }
 
 
@@ -111,5 +123,7 @@ namespace KnifeProduction.Data.Classes
             return GetBlades().FirstOrDefault(h => h.idFalsehood == Idfalshehood && h.idObuh == Idobuh);
 
         }
+
+        
     }
 }

@@ -44,10 +44,10 @@ namespace KnifeProduction.Data.Classes
             return GetKnives().FirstOrDefault(k => k.Name == name && k.Blade.id == idBlade && k.Handle.id == idHandle);
         }
 
-        
         public static void AddKnive(int idHandle, int idBlade, string name, int count, bool isHole)
         {
-            var getKnive = GetItemKnive(idBlade, idHandle);
+            var getKnive = GetKnive(idBlade, idHandle, name);
+            
             if (getKnive == null)
             {
                 Knives knives = new Knives
@@ -56,16 +56,16 @@ namespace KnifeProduction.Data.Classes
                     idHandle = idHandle,
                     Name = name,
                     Count = count,
-                    isHole = isHole
-                    
-                    
+                    isHole = isHole     
             };
                 DbConnection.connection.Knives.Add(knives);
                 DbConnection.connection.SaveChanges();
+                DataBaseRequesMaterial.MinusMaterial(knives.Handle, knives.Blade);
             }
             else
             {
                 getKnive.Count += count;
+                DataBaseRequesMaterial.MinusMaterial(getKnive.Handle, getKnive.Blade);
                 DbConnection.connection.SaveChanges();
             }
         }
