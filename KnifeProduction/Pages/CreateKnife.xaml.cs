@@ -90,22 +90,34 @@ namespace KnifeProduction.Pages
 
         private void CBMaterialObuh_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Obuh = CBMaterialObuh.SelectedItem as Obuh;   
+            Obuh = CBMaterialObuh.SelectedItem as Obuh;
+            txtCountObuh.Text = "Count: " + Obuh.Count.ToString();
+            var obuh = DataBaseRequesMaterial.GetObuh(Obuh.Name);
+            this.DataContext = obuh;
         }
 
         private void CBMaeterialFalsehood_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Falsehood = CBMaeterialFalsehood.SelectedItem as Falsehood;
+            txtCountFalsehood.Text = "Count: " + Falsehood.Count.ToString();
+            var falsehood = DataBaseRequesMaterial.GetFalsehood(Falsehood.Name);
+            this.DataContext = falsehood;
         }
 
         private void CBMaterialClip_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             clip = CBMaterialClip.SelectedItem as Clip;
+            txtCountClip.Text = "Count: " + clip.Count.ToString();
+            var Clip = DataBaseRequesMaterial.GetClip(clip.Name);
+            this.DataContext = Clip;
         }
 
         private void CBMaterialBackrest_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Backrest = CBMaterialBackrest.SelectedItem as Backrest;
+            txtCountBackrest.Text = "Count: " + Backrest.Count.ToString();
+            var backrest = DataBaseRequesMaterial.GetBackrest(Backrest.Name);
+            this.DataContext = backrest;
             try
             {
                 price = DataBaseRequestKnive.KniveGenerateSummCalcul(Obuh, Backrest, clip, Falsehood, countKnife);

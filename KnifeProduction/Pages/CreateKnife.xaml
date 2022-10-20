@@ -23,7 +23,8 @@
             </Grid.RowDefinitions>
             <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Vertical" VerticalAlignment="Top" Width="315">
                 <TextBlock Text="Blade" FontSize="25" Margin="0,5,0,0"/>
-                <ComboBox
+                <StackPanel Orientation="Horizontal">
+                    <ComboBox
                       SelectionChanged="CBMaterialObuh_SelectionChanged"
                       x:Name="CBMaterialObuh"
                       HorizontalAlignment="Left"
@@ -33,7 +34,10 @@
                       Margin="0,5,0,10"
                       Style="{StaticResource MaterialDesignFloatingHintComboBox}"
                       material:HintAssist.Hint="Material Obuh"/>
-                <ComboBox
+                    <TextBlock x:Name="txtCountObuh" Text="Count: " VerticalAlignment="Center" Margin="10,0,0,0" FontSize="25"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <ComboBox
                       SelectionChanged="CBMaeterialFalsehood_SelectionChanged"
                       DisplayMemberPath="Name"
                       x:Name="CBMaeterialFalsehood"
@@ -42,11 +46,15 @@
                       Height="45"
                       Style="{StaticResource MaterialDesignFloatingHintComboBox}"
                       material:HintAssist.Hint="Material Falsehood"/>
+                    <TextBlock x:Name="txtCountFalsehood" Text="Count: " VerticalAlignment="Center" Margin="10,0,0,0" FontSize="25"/>
+                </StackPanel>
+
             </StackPanel>
-            
+
             <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top" Width="315">
                 <TextBlock Text="Handle" FontSize="25" Margin="0,5,0,0"/>
-                <ComboBox
+                <StackPanel Orientation="Horizontal">
+                    <ComboBox
                       SelectionChanged="CBMaterialClip_SelectionChanged"
                       DisplayMemberPath="Name"
                       x:Name="CBMaterialClip"
@@ -56,7 +64,11 @@
                       Margin="0,5,0,10"
                       Style="{StaticResource MaterialDesignFloatingHintComboBox}"
                       material:HintAssist.Hint="Material Clip"/>
-                <ComboBox
+                    <TextBlock x:Name="txtCountClip" Text="Count: " VerticalAlignment="Center" Margin="10,0,0,0" FontSize="25"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+                    <ComboBox
                       SelectionChanged="CBMaterialBackrest_SelectionChanged"
                       x:Name="CBMaterialBackrest"
                       DisplayMemberPath="Name"
@@ -65,6 +77,9 @@
                       Height="45"
                       Style="{StaticResource MaterialDesignFloatingHintComboBox}"
                       material:HintAssist.Hint="Material Backrest"/>
+                    <TextBlock x:Name="txtCountBackrest" Text="Count: " VerticalAlignment="Center" Margin="10,0,0,0" FontSize="25"/>
+                </StackPanel>
+
             </StackPanel>
 
             <StackPanel Grid.Row="2" Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Width="315" Height="125">
@@ -84,6 +99,8 @@
                      material:HintAssist.Hint="Name" Width="240"/>
                 <Button Background="Transparent" Width="240" Margin="0,25,0,0" Height="40" Content="Create" Foreground="Black" x:Name="btnCreateKnife" Click="btnCreateKnife_Click"  Cursor="Hand"/>
             </StackPanel>
+
+            <Image x:Name="BladeImage" Grid.Column="1" Source="{Binding Image}" Width="340" RenderOptions.BitmapScalingMode="HighQuality" Margin="0,0,-3,2" Grid.RowSpan="2"/>
         </Grid>
     </material:Card>
 </Page>
