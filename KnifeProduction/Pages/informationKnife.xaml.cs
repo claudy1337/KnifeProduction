@@ -35,7 +35,11 @@ namespace KnifeProduction.Pages
             User = user;
             Knives = knives;
             InitializeComponent();
-            BindingData();
+            if (DataBaseRequestUser.GetAdminRole(User.Login) == false)
+            {
+                txtDelete.Visibility = Visibility.Hidden;
+            }
+                BindingData();
             maxCountKnife = Knives.Count;
         }
 

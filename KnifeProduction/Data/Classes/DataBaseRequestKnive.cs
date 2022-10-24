@@ -25,23 +25,23 @@ namespace KnifeProduction.Data.Classes
         }
         public static IEnumerable<Knives>GetHandleKnive(int idHandle)
         {
-            return GetKnives().Where(k=>k.Handle.id == idHandle && k.Count > 0).ToList();
+            return GetKnives().Where(k=>k.Handle.id == idHandle && k.Count > 0 && k.isActive==true).ToList();
         }
         public static IEnumerable<Knives>GetBladeKnive(int idBlade)
         {
-            return GetKnives().Where(k => k.Blade.id == idBlade && k.Count > 0).ToList();
+            return GetKnives().Where(k => k.Blade.id == idBlade && k.Count > 0 && k.isActive == true).ToList();
         }
         public static IEnumerable<Knives> GetKnive(int idBlade, int idHandle)
         {
-            return GetKnives().Where(k => k.Blade.id == idBlade && k.Handle.id == idHandle && k.Count > 0).ToList();
+            return GetKnives().Where(k => k.Blade.id == idBlade && k.Handle.id == idHandle && k.Count > 0 && k.isActive ==true).ToList();
         }
         public static Knives GetItemKnive(int idBlade, int idHandle)
         {
-            return GetKnives().FirstOrDefault(k => k.Blade.id == idBlade && k.Handle.id == idHandle);
+            return GetKnives().FirstOrDefault(k => k.Blade.id == idBlade && k.Handle.id == idHandle && k.isActive==true);
         }
         public static Knives GetKnive(int idHandle, int idBlade, string name)
         {
-            return GetKnives().FirstOrDefault(k => k.Name == name && k.Blade.id == idBlade && k.Handle.id == idHandle);
+            return GetKnives().FirstOrDefault(k => k.Name == name && k.Blade.id == idBlade && k.Handle.id == idHandle && k.isActive == true);
         }
         public static void RemoveKnive(Knives knives)
         {
