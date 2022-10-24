@@ -117,5 +117,12 @@ namespace KnifeProduction.Pages
             MessageBox.Show($"buying {Knives.Name} in {countKnife}");
             NavigationService.Navigate(new Market(User));
         }
+
+        private void txtDelete_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            DataBaseRequestKnive.RemoveKnive(Knives);
+            MessageBox.Show("нож удален");
+            NavigationService.Navigate(new Market(User));
+        }
     }
 }

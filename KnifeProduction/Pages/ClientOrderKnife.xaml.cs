@@ -27,6 +27,7 @@ namespace KnifeProduction.Pages
         public static OrderKnives orderKnives;
         public static Handle handle;
         public static Blade blade;
+        public static User setUser;
         public ClientOrderKnife(User user)
         {
             User = user;
@@ -38,6 +39,7 @@ namespace KnifeProduction.Pages
         {
             CBBlades.ItemsSource = DbConnection.connection.Blade.ToList();
             CBHandles.ItemsSource = DbConnection.connection.Handle.ToList();
+            CBClient.ItemsSource = DbConnection.connection.User.ToList();
         }
 
         private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -86,6 +88,27 @@ namespace KnifeProduction.Pages
                 if (CBBlades.SelectedIndex == -1)
                 {
                     lstvKnife.ItemsSource = DataBaseRequestOrderKnive.GetHandleOrderKnive(handle.id);
+                }
+                else
+                {
+                    lstvKnife.ItemsSource = DataBaseRequestOrderKnive.GetOrderKnive(blade.id, handle.id);
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("dont search");
+                return;
+            }
+        }
+
+        private void CBClient_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                setUser = CBClient.SelectedItem as User;
+                if (CBBlades.SelectedIndex == -1)
+                {
+                    lstvKnife.ItemsSource = DataBaseRequestOrderKnive.GetClientOrder(setUser.id);
                 }
                 else
                 {

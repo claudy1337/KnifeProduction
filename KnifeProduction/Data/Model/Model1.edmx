@@ -63,6 +63,7 @@
           <Property Name="isHole" Type="bit" Nullable="false" />
           <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Count" Type="int" />
+          <Property Name="isActive" Type="bit" />
         </EntityType>
         <EntityType Name="Obuh">
           <Key>
@@ -342,6 +343,7 @@
           <NavigationProperty Name="Blade" Relationship="Self.FK_Knives_Blade" FromRole="Knives" ToRole="Blade" />
           <NavigationProperty Name="Handle" Relationship="Self.FK_Knives_Handle" FromRole="Knives" ToRole="Handle" />
           <NavigationProperty Name="OrderKnives" Relationship="Self.FK_OrderKnives_Knives" FromRole="Knives" ToRole="OrderKnives" />
+          <Property Name="isActive" Type="Boolean" />
         </EntityType>
         <EntityType Name="Obuh">
           <Key>
@@ -615,6 +617,7 @@
           <EntitySetMapping Name="Knives">
             <EntityTypeMapping TypeName="knifeProdactionModel.Knives">
               <MappingFragment StoreEntitySet="Knives">
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="idBlade" ColumnName="idBlade" />
                 <ScalarProperty Name="idHandle" ColumnName="idHandle" />

@@ -21,7 +21,7 @@ namespace KnifeProduction.Data.Classes
         }
         public static IEnumerable<Knives> GetKnive()
         {
-            return GetKnives().Where(k => k.Count > 0);
+            return GetKnives().Where(k => k.Count > 0 && k.isActive == true);
         }
         public static IEnumerable<Knives>GetHandleKnive(int idHandle)
         {
@@ -43,6 +43,11 @@ namespace KnifeProduction.Data.Classes
         {
             return GetKnives().FirstOrDefault(k => k.Name == name && k.Blade.id == idBlade && k.Handle.id == idHandle);
         }
+        public static void RemoveKnive(Knives knives)
+        {
+            knives.isActive = false;
+            DbConnection.connection.SaveChanges();
+        }
 
         public static void AddKnive(int idHandle, int idBlade, string name, int count, bool isHole)
         {
@@ -56,7 +61,9 @@ namespace KnifeProduction.Data.Classes
                     idHandle = idHandle,
                     Name = name,
                     Count = count,
-                    isHole = isHole     
+                    isHole = isHole,
+                    isActive = true
+                   
             };
                 DbConnection.connection.Knives.Add(knives);
                 DbConnection.connection.SaveChanges();

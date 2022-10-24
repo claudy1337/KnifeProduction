@@ -45,6 +45,14 @@
                       Margin="0,0,0,18"
                       Style="{StaticResource MaterialDesignFloatingHintComboBox}"
                       material:HintAssist.Hint="Material Blades"/>
+
+                    <ComboBox
+                      SelectionChanged="CBClient_SelectionChanged"
+                      DisplayMemberPath="Name"
+                      x:Name="CBClient"
+                      Margin="0,0,0,18"
+                      Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                      material:HintAssist.Hint="Users"/>
                 </StackPanel>
             </Grid>
 

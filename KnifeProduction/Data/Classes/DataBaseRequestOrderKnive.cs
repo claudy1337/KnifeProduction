@@ -29,6 +29,10 @@ namespace KnifeProduction.Data.Classes
         {
             return GetOrderKnives().Where(k => k.Knives.Handle.id == idHandle).ToList();
         }
+        public static IEnumerable<OrderKnives> GetClientOrder(int idClient)
+        {
+            return GetOrderKnives().Where(c=>c.User.id == idClient).ToList();
+        }
         public static IEnumerable<OrderKnives> GetOrderKnive(int idBlade, int idHandle)
         {
             return GetOrderKnives().Where(k => k.Knives.Handle.id == idHandle && k.Knives.Blade.id == idBlade).ToList();
